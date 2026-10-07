@@ -1,0 +1,1967 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#EAE1F6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1C1626" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Our Space">
+<meta name="robots" content="noindex, nofollow">
+<title>Our Space</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232A2520'/%3E%3Ccircle cx='39' cy='50' r='23' fill='%23F4C8A6'/%3E%3Ccircle cx='61' cy='50' r='23' fill='%23CDB8E6' fill-opacity='.88'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>:root{
+  --bg:#ECE3F6; --shell:radial-gradient(130% 55% at 0% 0%,#DED0F1 0%,rgba(222,208,241,0) 62%),radial-gradient(120% 50% at 100% 100%,#F6DCCB 0%,rgba(246,220,203,0) 60%),linear-gradient(180deg,#EAE1F6 0%,#EDE4F5 55%,#F2E6EE 100%);
+  --surface:#FBF8FD; --surface-2:#E5DBF1; --ink:#3A2F45; --muted:#776B83; --line:#DDD1E9;
+  --lilac:#7C68A3; --lilac-ink:#FFFFFF; --lilac-soft:#E2D5F3;
+  --peach:#F4C3A3; --peach-ink:#3A2A22; --peach-soft:#FBE7DA; --peach-text:#A55E3A;
+  --accent:var(--lilac); --gold:#C9A15A; --moss:#6E8A78;
+  --btn:var(--lilac); --btn-ink:var(--lilac-ink);
+  --tint-sudipt:#F8DFCB; --tint-nayana:#E8DDF3;
+  --warm:var(--peach-soft); --danger:#A9473F;
+  --serif:'Cormorant Garamond','Iowan Old Style','Palatino',Georgia,serif;
+  --sans:'Hanken Grotesk',-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --r:12px; --r-lg:16px; --pill:999px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1D1726; --shell:linear-gradient(180deg,#1C1626 0%,#211A2A 55%,#271C24 100%);
+    --surface:#261F31; --surface-2:#30283C; --ink:#F2EBF7; --muted:#B4A7C2; --line:#3A3147;
+    --lilac:#CDB8EA; --lilac-ink:#24192F; --lilac-soft:#30283F;
+    --peach:#F0B591; --peach-ink:#2B1C14; --peach-soft:#3D2C2C; --peach-text:#F2B994;
+    --accent:var(--lilac); --gold:#D3AA62; --moss:#9DBBA6;
+    --btn:var(--lilac); --btn-ink:var(--lilac-ink);
+    --tint-sudipt:#47322A; --tint-nayana:#372D4E; --warm:var(--peach-soft); --danger:#EE8C82; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1D1726; --shell:linear-gradient(180deg,#1C1626 0%,#211A2A 55%,#271C24 100%);
+  --surface:#261F31; --surface-2:#30283C; --ink:#F2EBF7; --muted:#B4A7C2; --line:#3A3147;
+  --lilac:#CDB8EA; --lilac-ink:#24192F; --lilac-soft:#30283F;
+  --peach:#F0B591; --peach-ink:#2B1C14; --peach-soft:#3D2C2C; --peach-text:#F2B994;
+  --accent:var(--lilac); --gold:#D3AA62; --moss:#9DBBA6;
+  --btn:var(--lilac); --btn-ink:var(--lilac-ink);
+  --tint-sudipt:#47322A; --tint-nayana:#372D4E; --warm:var(--peach-soft); --danger:#EE8C82; color-scheme:dark;
+}
+:root{box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+html{background:var(--bg);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;letter-spacing:.005em;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+.shell{position:fixed;inset:0;display:flex;flex-direction:column;background:var(--shell)}
+.scroll{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
+.app{max-width:540px;margin:0 auto;padding:calc(14px + env(safe-area-inset-top,0px)) max(20px, env(safe-area-inset-right,0px)) 28px max(20px, env(safe-area-inset-left,0px));animation:arrive .6s ease both}
+@keyframes arrive{from{opacity:0}to{opacity:1}}
+h1,h2,h3{margin:0;font-weight:400}
+h2{font-family:var(--serif);font-weight:500;font-size:27px;line-height:1.15;letter-spacing:-.005em}
+h3{font-size:14.5px;font-weight:600}
+p{margin:0}
+.muted{color:var(--muted)}
+.small{font-size:13.5px}
+.lead{color:var(--muted);font-size:14px;margin:6px 0 16px;max-width:42ch}
+.stack{display:flex;flex-direction:column;gap:14px}
+.stack-lg{display:flex;flex-direction:column;gap:28px;margin-top:24px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+:focus-visible{outline:1.5px solid var(--accent);outline-offset:3px}
+
+/* header: the one bold thing */
+.top{margin-top:2px}
+.clocks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.clock{position:relative;overflow:hidden;border-radius:var(--r-lg);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4),0 1px 2px rgba(58,47,69,.06);padding:14px 16px 15px;min-height:112px;display:flex;flex-direction:column;transition:background 1.4s ease,color 1.4s ease}
+.clock::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.22;mix-blend-mode:soft-light;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.c-name{font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--sub)}
+.c-time{font-family:var(--serif);font-weight:500;font-size:38px;line-height:1.05;margin-top:auto;white-space:nowrap;font-variant-numeric:lining-nums}
+.c-time .ampm{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.06em;margin-left:.4em;color:var(--sub)}
+.c-city{font-size:12.5px;color:var(--sub);margin-top:2px}
+.bridge-line{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--muted);text-align:center;margin:12px auto 0}
+.bridge-line.paused{font-family:var(--sans);font-style:normal;font-size:13.5px;color:var(--ink);background:var(--warm);border-radius:var(--pill);padding:7px 16px;width:fit-content}
+.bridge-line strong{font-weight:600}
+
+/* bottom nav */
+.nav{flex:none;position:relative;z-index:20;display:flex;justify-content:center;background:color-mix(in srgb,var(--surface) 92%,transparent);border-top:1px solid var(--line);padding:8px max(8px, env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(8px, env(safe-area-inset-left,0px))}
+.nav[hidden]{display:none}
+.nav-inner{display:flex;max-width:540px;width:100%}
+.nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;border:0;background:none;font:inherit;font-size:11px;font-weight:500;letter-spacing:.03em;color:var(--muted);padding:4px 0 2px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.nav button[aria-current="page"]{color:var(--ink)}
+.nav button[aria-current="page"] .nav-ic{color:var(--lilac)}
+.nav .nav-me .nav-ic{width:28px;height:22px}
+.nav .nav-me .nav-ic svg{width:28px;height:22px}
+.nav .nav-me[aria-current="page"] .nav-ic svg circle:first-child{fill:var(--peach);stroke:var(--peach)}
+.nav .nav-me[aria-current="page"] .nav-ic svg circle:last-child{fill:color-mix(in srgb,var(--lilac) 70%,transparent);stroke:var(--lilac)}
+.nav-ic{display:block;width:22px;height:22px}
+.nav-ic svg{width:22px;height:22px;display:block;stroke-width:1.4}
+
+.notice{margin-top:16px;padding:10px 14px;border-radius:var(--r);background:var(--surface-2);font-size:13.5px}
+
+/* building blocks */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px}
+.card-title{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--ink);margin-bottom:10px}
+.block{padding:22px 0 2px}
+.block + .block{border-top:1px solid var(--line);margin-top:20px}
+.block > h2{margin-bottom:2px}
+.banner{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--warm);border-radius:var(--r);padding:13px 16px;font-size:14.5px;line-height:1.5}
+.good-line{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-top:-10px}
+
+/* buttons, fields */
+.btn{font:inherit;font-weight:500;font-size:14.5px;letter-spacing:.02em;border:1px solid transparent;border-radius:8px;padding:11px 20px;cursor:pointer;background:var(--btn);color:var(--btn-ink);-webkit-tap-highlight-color:transparent;transition:opacity .2s}
+.btn:active{opacity:.8}
+.btn.secondary{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.pause{background:var(--peach);color:var(--peach-ink)}
+.btn.small{padding:7px 14px;font-size:13.5px}
+.btn.big{width:100%;padding:15px 20px;font-size:15.5px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.linkish{background:none;border:0;padding:0;font:inherit;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-decoration-thickness:1px;text-underline-offset:4px;cursor:pointer}
+.quiet-link{color:var(--muted);align-self:center;text-decoration:none;font-size:13.5px}
+.label{display:block;font-weight:500;font-size:13px;letter-spacing:.02em;color:var(--muted);margin-bottom:7px}
+.field{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.field::placeholder{color:color-mix(in srgb,var(--muted) 75%,transparent)}
+textarea.field{min-height:104px;resize:vertical;line-height:1.5}
+input[type="date"].field,input[type="time"].field,input[type="datetime-local"].field{-webkit-appearance:none;appearance:none;min-height:48px;display:block;min-width:0;text-align:left;line-height:1.3}
+input::-webkit-date-and-time-value{text-align:left}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:13.5px;padding:8px 14px;border-radius:8px;cursor:pointer;line-height:1.25}
+.chip[aria-pressed="true"]{background:var(--btn);color:var(--btn-ink);border-color:var(--btn)}
+.tag{display:inline-block;font-size:12px;font-weight:500;letter-spacing:.02em;padding:2px 9px;border-radius:6px;background:var(--surface-2);color:var(--ink)}
+.tag.good{background:color-mix(in srgb,var(--moss) 22%,var(--surface))}
+.tag.warn{background:var(--warm)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;font:inherit;font-size:13.5px;font-weight:500;color:var(--muted);padding:7px 14px;border-radius:7px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--lilac-soft);color:var(--ink)}
+.seg.wide{display:flex}
+.seg.wide button{flex:1}
+
+/* lists */
+.list{border-top:1px solid var(--line)}
+.list-row{display:flex;justify-content:space-between;align-items:center;gap:14px;width:100%;padding:16px 2px;border:0;border-bottom:1px solid var(--line);background:transparent;font:inherit;font-size:15px;color:var(--ink);text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.row-main{display:flex;flex-direction:column;gap:2px;min-width:0}
+.row-main .sub{font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row-end{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.chev{color:var(--muted);font-size:20px;line-height:1;font-weight:300}
+.check{color:var(--lilac);font-weight:600;min-width:16px;text-align:right}
+.list-row.on{background:linear-gradient(90deg,var(--lilac-soft),transparent)}
+.list-row.on .row-main > span:first-child,.list-row.on > span:first-child{font-weight:600}
+.badge{background:var(--peach);color:var(--peach-ink);border-radius:var(--pill);font-size:11.5px;font-weight:600;padding:1px 8px}
+
+/* person space */
+.space-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.space-head h2{font-size:32px}
+.sub-head{margin-top:18px}
+.back{background:none;border:0;font:inherit;font-size:14.5px;font-weight:500;color:var(--muted);padding:6px 0;cursor:pointer}
+.idea{padding:18px 20px;border-radius:var(--r-lg);background:linear-gradient(150deg,var(--lilac-soft) 0%,var(--peach-soft) 100%)}
+.idea-label{font-size:12.5px;font-weight:600;letter-spacing:.06em;color:var(--peach-text)}
+.idea-text{font-family:var(--serif);font-weight:500;font-size:25px;line-height:1.3;margin:10px 0 14px;letter-spacing:-.005em}
+.idea-foot{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.idea-from{font-size:12.5px;color:var(--muted);min-width:0}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-height:92px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:var(--r-lg);padding:15px 16px;font:inherit;color:var(--ink);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tile-title{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.1}
+.tile-sub{font-size:12.5px;color:var(--muted);line-height:1.4}
+.tile.warm{background:var(--warm);border-color:transparent}
+.tile.soft .tile-sub{color:var(--peach-text)}
+
+/* home */
+.home-space{display:flex;flex-direction:column;align-items:center;gap:12px}
+.spaces{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.space-card{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:18px 16px;min-height:104px;justify-content:flex-end;border-radius:var(--r-lg);border:0;background:var(--surface);color:var(--ink);font:inherit;cursor:pointer}
+.space-card.from-sudipt{background:var(--tint-sudipt)}
+.space-card.from-nayana{background:var(--tint-nayana)}
+.space-name{font-family:var(--serif);font-weight:500;font-size:24px}
+.space-sub{font-size:13px;color:var(--muted)}
+.t-row{padding:12px 0;border-bottom:1px solid var(--line)}
+.t-row:first-of-type{padding-top:0}
+.t-row:last-child{border-bottom:0;padding-bottom:0}
+.t-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.t-name{font-family:var(--serif);font-weight:500;font-size:19px}
+.t-mood{color:var(--muted);font-size:14px}
+.t-need{font-size:13.5px;color:var(--muted)}
+.u-row{display:flex;gap:14px;padding:11px 0;align-items:center;border:0;border-bottom:1px solid var(--line);background:none;width:100%;text-align:left;font:inherit;color:var(--ink);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.u-row .chev{margin-left:auto}
+.u-main{display:flex;flex-direction:column;gap:1px;min-width:0}
+.u-sub{font-size:12.5px;color:var(--muted);line-height:1.4}
+.u-empty{background:none;border:0;padding:0;font:inherit;font-size:13.5px;color:var(--muted);cursor:pointer;text-align:left}
+.u-row:last-child{border-bottom:0}
+.u-when{flex:0 0 78px;font-size:12.5px;letter-spacing:.02em;color:var(--muted)}
+.u-title{font-size:15px}
+.set-row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.code{font-family:var(--serif);font-size:21px;padding:14px;border-radius:10px;background:var(--surface-2);text-align:center;margin-top:12px;overflow-wrap:anywhere}
+
+/* messages */
+.feed{list-style:none;margin:8px 0 0;padding:0}
+.feed > li{padding:14px 0;border-bottom:1px solid var(--line)}
+.feed > li:last-child{border-bottom:0}
+.feed.jar{display:flex;flex-direction:column;gap:12px;margin-top:14px}
+.feed.jar > li{border:0;border-radius:var(--r-lg);padding:18px 20px;background:var(--tint-sudipt)}
+.feed.jar > li.from-nayana{background:var(--tint-nayana)}
+.feed.boxed{display:flex;flex-direction:column;gap:10px}
+.feed.boxed > li{border:1px solid var(--line);border-radius:var(--r);padding:15px 16px;background:var(--surface)}
+.feed.boxed > li:last-child{border-bottom:1px solid var(--line)}
+.plain{list-style:none;padding:0;margin:4px 0 12px}
+.plain li{padding:7px 0}
+.meta{font-size:12px;letter-spacing:.02em;color:var(--muted);margin-bottom:4px}
+.feed.jar .meta,.jar-one .meta{color:var(--ink);opacity:.62}
+.appr-text{font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.35;overflow-wrap:anywhere}
+.jar-one{border-radius:var(--r);padding:16px 18px;background:var(--tint-sudipt)}
+.jar-one.from-nayana{background:var(--tint-nayana)}
+.bubble{border-radius:12px;padding:11px 14px;margin:8px 0 0;font-size:14.5px;line-height:1.5;background:var(--tint-sudipt);color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere}
+.bubble.from-nayana{background:var(--tint-nayana)}
+.pause-panel .bubble{background:var(--surface)}
+.quote{border-left:2px solid var(--peach);padding:2px 0 2px 12px;margin:10px 0;font-size:14.5px}
+.say{margin:10px 0;padding:12px 14px;border-radius:10px;background:var(--surface-2);font-size:14.5px}
+.say b{font-weight:600}
+.empty{padding:16px 0;color:var(--muted);font-family:var(--serif);font-style:italic;font-size:17px}
+.req-text{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.3;margin-top:2px}
+.partner{padding:10px 0 0}
+.hint{margin-top:8px;font-size:14.5px}
+.note-item{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.note-item p{white-space:pre-wrap;overflow-wrap:anywhere}
+
+/* pause, steps, patterns */
+.pause-panel{border-radius:var(--r-lg);padding:18px;background:var(--surface);border:1px solid var(--line)}
+.pause-panel.active{background:var(--warm);border-color:transparent}
+.pause-panel h2{font-size:24px;margin-bottom:6px}
+.step-card{border-radius:var(--r-lg);padding:18px;background:var(--surface);border:1px solid var(--line)}
+.step-count{font-size:12px;letter-spacing:.06em;color:var(--peach-text);margin-bottom:4px}
+.step-card h3{font-family:var(--serif);font-weight:500;font-size:21px}
+.step-card ul{margin:10px 0 0;padding-left:20px}
+.step-card li{margin:5px 0}
+.pattern{border:0;border-bottom:1px solid var(--line);background:transparent;padding:0;margin:0}
+.pattern:first-of-type{border-top:1px solid var(--line)}
+section > .lead + .pattern{border-top:1px solid var(--line)}
+.pattern > summary{list-style:none;cursor:pointer;padding:16px 2px;font-size:15px;font-weight:500;display:flex;justify-content:space-between;gap:14px}
+.pattern > summary::-webkit-details-marker{display:none}
+.pattern > summary::after{content:'+';color:var(--muted);font-weight:300;font-size:20px;line-height:1}
+.pattern[open] > summary::after{content:'\2013'}
+.pattern-body{padding:0 2px 12px}
+.pattern-body .what{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.4;color:var(--muted);margin-bottom:8px}
+.pattern-body .role{font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--lilac);margin:14px 0 6px}
+.pattern-body ul,.pattern-body ol{margin:0 0 10px;padding-left:18px}
+.pattern-body li{margin:6px 0}
+.swap-wrap{overflow-x:auto}
+.swap{width:100%;border-collapse:collapse;font-size:14px;margin-bottom:10px}
+.swap th,.swap td{text-align:left;padding:9px 10px 9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.swap th{font-weight:500;color:var(--muted);font-size:12.5px;letter-spacing:.03em}
+.talk-dl{margin:6px 0 0;display:grid;gap:4px}
+.talk-dl dt{font-size:12px;color:var(--muted)}
+.talk-dl dd{margin:0 0 4px}
+
+/* calendar */
+.cal-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.cal-head h2{font-size:28px}
+.cal-nav{display:flex;gap:6px}
+.cal-nav .btn{padding:6px 12px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px 2px}
+.cal-dow{font-size:11.5px;letter-spacing:.04em;color:var(--muted);text-align:center;padding:2px 0 8px}
+.cal-day{aspect-ratio:1/1;border:0;background:transparent;border-radius:50%;font:inherit;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0;min-width:0;max-width:46px;margin:0 auto;width:100%;transition:background .2s}
+.cal-day.out{cursor:default}
+.cal-day.today{box-shadow:inset 0 0 0 1.5px var(--lilac)}
+.cal-day.anniv{background:radial-gradient(circle at 35% 30%, #F3E1B2 0%, var(--gold) 70%, #A97C36 100%);color:#2A2117;box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 22%,transparent)}
+.cal-day[aria-pressed="true"]{background:var(--btn);color:var(--btn-ink);box-shadow:none}
+.cal-day.anniv[aria-pressed="true"]{background:radial-gradient(circle at 35% 30%, #F3E1B2 0%, var(--gold) 70%, #A97C36 100%);color:#2A2117;box-shadow:0 0 0 2px var(--bg),0 0 0 3.5px var(--gold)}
+.cal-num{font-size:14.5px;font-weight:500;line-height:1}
+.cal-marks{display:flex;gap:2px;height:5px;align-items:center}
+.cal-dot{width:4px;height:4px;border-radius:50%;background:var(--peach-text)}
+.cal-day[aria-pressed="true"] .cal-dot{background:var(--btn-ink)}
+.cal-day.anniv .cal-heart{display:none}
+.cal-heart{color:var(--gold);font-size:9px;line-height:1}
+.cal-heart.big{font-size:14px}
+.ev{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.ev-body{flex:1;min-width:0}
+.ev-title{font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.25;overflow-wrap:anywhere}
+.lock{font-size:13px;color:var(--muted);margin-top:2px}
+
+/* PIN, setup, toast */
+.pin-wrap{max-width:340px;margin:30px auto 0}
+.pin-wrap h2{margin-bottom:6px}
+.pin-input{font-size:24px;letter-spacing:.4em;text-align:center}
+.err{color:var(--danger);font-size:14px;min-height:1.4em;margin-top:8px}
+.toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--btn);color:var(--btn-ink);padding:11px 18px;border-radius:10px;font-size:14px;max-width:calc(100% - 40px);opacity:0;transition:opacity .25s;pointer-events:none;z-index:40;text-align:center}
+.toast.show{opacity:1}
+.overlay{position:fixed;inset:0;overflow-y:auto;background:var(--bg);display:grid;place-items:center;z-index:30;padding:calc(24px + env(safe-area-inset-top,0px)) 28px calc(24px + env(safe-area-inset-bottom,0px))}
+.picker{max-width:380px;width:100%}
+.picker h1{font-family:var(--serif);font-weight:500;font-size:44px;line-height:1.05;margin-bottom:12px}
+.picker .btn{width:100%;margin-top:12px;padding:15px 20px;font-size:15.5px}
+.picker .btn.alt{background:var(--peach);color:var(--peach-ink)}
+.footer:empty{display:none}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+.u-row .cal-heart{font-size:12px;margin-right:2px}
+
+.who-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:middle;transform:translateY(-1px);flex:none}
+.who-dot.for-sudipt{background:var(--peach)}
+.who-dot.for-nayana{background:#C3AEE3}
+.who-dot.for-both{background:linear-gradient(90deg,var(--peach) 50%,#C3AEE3 50%)}
+.ev-actions{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex:none}
+.jar-one.tap{display:block;width:100%;text-align:left;border:0;font:inherit;color:var(--ink);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tap-hint{display:block;margin-top:10px;font-size:12.5px;color:var(--ink);opacity:.62}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="scroll" id="scroller">
+    <div class="app">
+      <header class="top" id="skies" aria-live="polite"></header>
+      <div id="notices"></div>
+      <main id="main"></main>
+      <footer class="footer" id="footer"></footer>
+    </div>
+  </div>
+  <nav class="nav" aria-label="Sections" id="tabs"></nav>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="overlay-root"></div>
+
+<!-- Firebase keeps both phones in sync. Paste your own config and push key below; see README.md. -->
+<script>
+window.FIREBASE_CONFIG = {
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
+};
+window.FIREBASE_VAPID_KEY = "";
+</script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
+<script>
+(function(){
+'use strict';
+
+/* ---------- constants ---------- */
+const ZONES = { milan:'Europe/Rome', kochi:'Asia/Kolkata' };
+const CITY_NAME = { milan:'Milan', kochi:'Kochi' };
+const PEOPLE = {
+  sudipt:{ name:'Sudipt', he:'he', him:'him', his:'his' },
+  nayana:{ name:'Nayana', he:'she', him:'her', his:'her' }
+};
+const ENERGY = [
+  {k:'full', label:'Full tank'},
+  {k:'okay', label:'Doing okay'},
+  {k:'low', label:'Running low'},
+  {k:'lowcap', label:'Low-capacity day'}
+];
+const NEEDS = [
+  {k:'heard', label:'To be heard', phrase:'to be heard'},
+  {k:'space', label:'Some space', phrase:'some space'},
+  {k:'reassure', label:'Reassurance', phrase:'reassurance'},
+  {k:'help', label:'Help with something', phrase:'help with something'},
+  {k:'fun', label:'Something fun', phrase:'something fun'}
+];
+const STARTERS = ['I loved how you ', 'Thank you for ', 'I felt close to you when '];
+const SWAPS = [
+  ['\u201cYou always\u2026\u201d or \u201cYou never\u2026\u201d', '\u201cWhen ___ happened, I felt ___.\u201d'],
+  ['\u201cBut I\u2019ve done so much\u2026\u201d', '\u201cThat sounds hard. Tell me more.\u201d'],
+  ['\u201cWhatever.\u201d', '\u201cI\u2019m not ready to talk yet. Can we do later?\u201d'],
+  ['\u201cFine.\u201d', '\u201cI\u2019m still a bit upset, but I\u2019ll come back to this.\u201d'],
+  ['\u201cI\u2019m done.\u201d', '\u201cI\u2019m overwhelmed and need a breather.\u201d'],
+  ['\u201cWe have to sort this now.\u201d', '\u201cWhen\u2019s a good time for you to talk?\u201d'],
+  ['\u201cSorry, but\u2026\u201d', '\u201cI\u2019m sorry.\u201d Your point can wait for later.']
+];
+/* Ideas are the same for both people. Each person picks what they want to work on. */
+const FOCUS = [
+  { k:'listen', label:'Listen first', chip:'Listen first', ask:'listen first before replying', ideas:[
+    'Next time {O} shares something hard, try repeating it back before replying: \u201cSo it felt like\u2026?\u201d',
+    'Asking \u201cDo you want ideas, or just someone to listen?\u201d takes the guesswork out for both of you.',
+    'Let {O} finish the whole thought, pauses included. The best reply can wait a few seconds.'
+  ]},
+  { k:'say', label:'Say what I need', chip:'Tell me what you need', ask:'tell me what you need, in plain words', ideas:[
+    'Try one \u201cI need\u2026\u201d sentence today, even a small one.',
+    'If something feels off, a short \u201cI\u2019m a bit upset about ___, can we talk later?\u201d keeps it from building up.',
+    'Tell {O} what support looks like today: listening, a hand with something, or just company.'
+  ]},
+  { k:'touch', label:'Keep in touch through the day', chip:'Keep in touch more', ask:'keep in touch a little more through the day', ideas:[
+    'A quick \u201cthinking of you\u201d in the middle of the day goes a long way.',
+    'If you\u2019ll be busy for a while, a one-line heads-up keeps the quiet from feeling confusing.',
+    'Share one small moment from your day with {O}: a photo, a thought, something funny.'
+  ]},
+  { k:'reachout', label:'Reach out first', chip:'Reach out first sometimes', ask:'reach out first sometimes', ideas:[
+    'Be the one to call first today.',
+    'Send the good-morning message before {O} does.',
+    'Plan the next date before {O} gets the chance.'
+  ]},
+  { k:'affection', label:'Show more affection', chip:'More affection', ask:'show me a bit more affection', ideas:[
+    'Tell {O} one thing you find attractive about {him} today.',
+    'Send something sweet out of nowhere, no reason needed.',
+    'Make {O} feel wanted: a compliment, a plan, a little flirt.'
+  ]},
+  { k:'notice', label:'Notice the good', chip:'Notice the good things', ask:'notice the good things I do', ideas:[
+    'Look for one thing {O} did well today and tell {him}.',
+    'Compliment something specific: how {O} looks, an idea {he} had, how {he} handled something.',
+    'Add a thank-you to the jar. Small and specific counts the most.'
+  ]},
+  { k:'curious', label:'Be curious about them', chip:'Be curious about my world', ask:'ask me more about my world', ideas:[
+    'Ask {O} one follow-up question about {his} day or something {he} loves.',
+    'Ask about something {O} mentioned yesterday. Remembering details feels like care.',
+    'Learn a little about something {O} is into, then ask {him} to tell you more.'
+  ]},
+  { k:'support', label:'Support their goals', chip:'Support my goals', ask:'cheer on the things I\u2019m working towards', ideas:[
+    'Ask how {O}\u2019s classes or projects are going, and celebrate a small win.',
+    'Offer help without taking over: \u201cWant a hand, or should I cheer from here?\u201d',
+    'If {O} has something big this week, wish {him} luck before it, not just after.'
+  ]},
+  { k:'fun', label:'Plan fun things', chip:'Plan fun things for us', ask:'plan something fun for us', ideas:[
+    'Plan a small surprise or a date, even a video-call one.',
+    'Send {O} something that made you laugh today.',
+    'Suggest something new to try together in Milan.'
+  ]},
+  { k:'space', label:'Take space kindly', chip:'Take space kindly', ask:'take space kindly, with a time you\u2019ll be back', ideas:[
+    'When you need a breather, a pause with a time you\u2019ll be back gives you room and gives {O} peace of mind.',
+    '\u201cI\u2019m overwhelmed, give me an hour\u201d is enough to say. No explanation needed.',
+    'Coming back when you said you would makes the next pause easier for both of you.'
+  ]},
+  { k:'calm', label:'Stay calm when it\u2019s tense', chip:'Stay calm in tense moments', ask:'stay calm with me when things get tense', ideas:[
+    'If a long message is building up, write it in your notes first and read it again in an hour.',
+    'Big topics usually go better on a call than over text.',
+    'It\u2019s okay to say \u201cLet\u2019s pick this up tomorrow when we\u2019re both fresh.\u201d'
+  ]},
+  { k:'repair', label:'Make up quickly', chip:'Make up quickly', ask:'make up quickly after we argue', ideas:[
+    'A short, specific sorry without a \u201cbut\u201d goes a long way.',
+    'When {O} apologises, \u201cThank you, I accept it\u201d helps you both move on, even if you still need time.',
+    'After a hard talk, a small kind message later says \u201cwe\u2019re okay.\u201d'
+  ]},
+  { k:'trust', label:'Build trust', chip:'Keep me in the loop', ask:'keep me in the loop about plans and people', ideas:[
+    'Mention plans and new people before, not after. No surprises makes everything lighter.',
+    'Keep one small promise today and mark it in the app.',
+    'Keep the things you two share between the two of you.'
+  ]}
+];
+const PATTERNS = [
+  { k:'space', title:'Needing space in the middle of an argument', what:'One of us goes quiet or ends the call. The other is left guessing and starts chasing.', roles:[
+    ['If you need space', ['Start a pause with a return time instead of going quiet.', 'Swap \u201cI\u2019m done\u201d for \u201cI\u2019m overwhelmed and I need a pause.\u201d', 'Come back at the time you set, even if it\u2019s only to ask for another hour.']],
+    ['If you\u2019re the one waiting', ['Check for a pause before reaching out again. One kind message is enough.', 'Write the rest in your notes and decide later if it needs saying.']]]},
+  { k:'notes', title:'Sharing something and getting notes back', what:'One of us shares a plan, an outfit or a decision, and the reply sounds like a correction instead of interest.', roles:[
+    ['Before giving your take', ['Ask: \u201cDo you want my take, or do you just want to show me?\u201d', 'Ask one follow-up question first, and let them finish.']],
+    ['If you just wanted to share', ['Say it kindly, early: \u201cI just want to show you, not get notes.\u201d']]]},
+  { k:'unsupported', title:'Feeling unsupported', what:'One of us says they feel unsupported. The other answers with what they\u2019ve already done, and it lands as a counter-argument.', roles:[
+    ['If you feel unsupported', ['Say exactly what support looks like today: \u201cJust listen,\u201d or \u201cHelp me decide.\u201d']],
+    ['If you\u2019re hearing it', ['Reflect back before adding anything: \u201cSo you felt ___ when ___?\u201d', 'Instead of listing what you\u2019ve done, ask: \u201cWhat would support look like right now?\u201d']]]},
+  { k:'apology', title:'Apologies that don\u2019t land', what:'An apology comes with a \u201cbut\u201d, or a sincere one gets no answer, and the fight stays open.', roles:[
+    ['When you apologise', ['No \u201cbut\u201d. Save your own point for a separate, calm conversation.']],
+    ['When you receive one', ['If it\u2019s sincere, try \u201cThank you, I accept it,\u201d even if you still need time.']]]},
+  { k:'midfight', title:'Things that come out mid-fight', what:'Something heavy, or something that stung days ago, comes out in the middle of an argument and makes it bigger.', roles:[
+    ['Before it builds up', ['Share heavy things, like family, health or college stress, early and calmly.', 'Mention new friends or plans to meet someone before, not after.', 'If something stung, name it soon, once, calmly.']],
+    ['If it\u2019s already old', ['Write it in your notes and bring it to the Sunday check-in, not a fight.']]]},
+  { k:'replies', title:'Slow replies and long messages', what:'A slow reply gets read as something it isn\u2019t, and a long message or a silence follows.', roles:[
+    ['On a busy day', ['One line keeps the other steady: \u201cSwamped, love you, talk at 9.\u201d']],
+    ['When something\u2019s off', ['Say it directly: \u201cI\u2019m upset about ___.\u201d Silence gets misread.']],
+    ['If you\u2019re anxious about a reply', ['Write it in your notes first, then decide in an hour if it needs saying.', 'Before sending a long message, ask if it should be a call instead.']]]},
+  { k:'effort', title:'Feeling like the effort is one-sided', what:'One of us feels taken for granted, and it comes out later as a complaint instead of a request.', roles:[
+    ['Either of you, today', ['Notice one specific thing the other did well, and say it.', 'Reach out first once, with a call or a message.', 'Take one small thing off the other\u2019s plate without being asked.']]]},
+  { k:'close', title:'Feeling more like friends lately', what:'Life gets busy, and one of us starts to miss feeling wanted and close.', roles:[
+    ['Either of you, this week', ['Tell the other one thing you find attractive about them.', 'Plan something just for the two of you, even a video-call date.', 'Send something sweet out of nowhere, no reason needed.']]]}
+];
+const DEFAULT_PATTERNS = ['effort', 'close'];
+const OLD_FOCUS = { listen:'unsupported', say:'replies', touch:'replies', reachout:'effort', affection:'close', notice:'effort', curious:'effort', support:'effort', fun:'close', space:'space', calm:'midfight', repair:'apology', trust:'midfight' };
+function normFocus(arr){
+  const out = [];
+  (arr || []).forEach(k => { const v = (typeof k === 'string' && k.indexOf('c:') === 0) ? k : (PATTERNS.some(x => x.k === k) ? k : OLD_FOCUS[k]); if (v && !out.includes(v)) out.push(v); });
+  return out.slice(0, 3);
+}
+const WORDS = ['amber','basil','cedar','cloud','coral','delta','ember','fern','fig','frost','garnet','harbor','hazel','indigo','iris','ivory','jade','juniper','kite','lagoon','lemon','lilac','linen','lotus','maple','marble','meadow','mint','misty','moss','nectar','oak','olive','opal','orchid','pearl','pebble','pepper','pine','plum','poppy','quartz','quill','rain','reed','river','robin','rose','saffron','sage','sand','shell','silk','slate','snow','sorrel','spruce','star','stone','sugar','sunset','thyme','tide','tulip','velvet','violet','willow','wren','almond','birch','canyon','dune','echo','falcon','glacier','honey','island','jasmine','lark','lantern','mango','nutmeg','orbit','peony','raven','sparrow','summit','teal','tundra','walnut','yarrow','zephyr','acorn','bramble','clover','dahlia','elm'];
+const READONLY_MSG = 'Couldn\u2019t save that. Check your connection and try again.';
+
+function newDraft(){
+  return { pauseOpt:null, pauseCustom:'', pauseNote:'', energy:null, need:null, ciNote:'', ciDirty:false,
+    apprText:'', promText:'', promBy:'', noteText:'', newPin:'', newPin2:'', showPinChange:false, reqFocus:null, reqNote:'' };
+}
+
+/* ---------- state ---------- */
+const state = {
+  phase:'loading', code:null, sid:null, mode:'local', connErr:'',
+  settings:{ nayanaCity:'kochi' }, pause:null, checkins:[], apps:[], promises:[], talks:[],
+  pins:{ sudipt:null, nayana:null }, pinsLoaded:{ sudipt:false, nayana:false }, focus:{ sudipt:[], nayana:[] },
+  tab:'us', view:null, unlocked:{}, notes:{ sudipt:[], nayana:[] },
+  pin:null, setup:{ stage:'choose', newCode:'', joinCode:'', err:'' }, showCode:false,
+  d:{ sudipt:newDraft(), nayana:newDraft() },
+  talkStep:0, speaker:null, talk:{ topic:'', us:'', un:'', ws:'', wn:'' },
+  events:[], cal:null, requests:[], patterns:[], sub:null, together:'thanks', ideaShift:0, homeBoth:false, np:{ title:'', help:'' }, npOpen:false
+};
+function newEventDraft(){ return { title:'', time:'', city:deviceCity(), for:'both', yearly:false, note:'' }; }
+function deviceCity(){ try{ const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; return /Kolkata|Calcutta/.test(tz) ? 'kochi' : 'milan'; }catch(e){ return 'milan'; } }
+let store = null, fsdb = null, unsubs = [];
+
+/* ---------- helpers ---------- */
+function h(tag, props, ...kids){
+  const el = document.createElement(tag);
+  if (props) for (const k in props){
+    const v = props[k];
+    if (v == null || v === false) continue;
+    if (k === 'class') el.className = v;
+    else if (k === 'text') el.textContent = v;
+    else if (k === 'value') el.value = v;
+    else if (k.slice(0,2) === 'on' && typeof v === 'function') el.addEventListener(k.slice(2).toLowerCase(), v);
+    else el.setAttribute(k, v === true ? '' : String(v));
+  }
+  for (const kid of kids.flat(3)){
+    if (kid == null || kid === false) continue;
+    el.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
+  }
+  return el;
+}
+const nowISO = () => new Date().toISOString();
+function toTop(){ const el = document.getElementById('scroller'); if (el) el.scrollTop = 0; }
+function other(p){ return p === 'sudipt' ? 'nayana' : 'sudipt'; }
+function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+function cityOf(p){ return p === 'sudipt' ? 'milan' : (state.settings.nayanaCity === 'milan' ? 'milan' : 'kochi'); }
+function tzOf(p){ return ZONES[cityOf(p)]; }
+function sameCity(){ return cityOf('sudipt') === cityOf('nayana'); }
+function pad(n){ return String(n).padStart(2,'0'); }
+function parts(date, tz){
+  const f = new Intl.DateTimeFormat('en-US',{timeZone:tz, year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', second:'2-digit', hourCycle:'h23', weekday:'short'});
+  const o = {}; for (const x of f.formatToParts(date)) o[x.type] = x.value;
+  return { y:+o.year, m:+o.month, d:+o.day, h:(+o.hour)%24, mi:+o.minute, s:+o.second, wd:o.weekday };
+}
+function tzOffsetMin(tz, date){
+  const p = parts(date, tz);
+  return Math.round((Date.UTC(p.y,p.m-1,p.d,p.h,p.mi,p.s) - date.getTime())/60000);
+}
+function zonedAt(tz, dayOffset, hour, minute){
+  const now = new Date(); const p = parts(now, tz); const off = tzOffsetMin(tz, now);
+  return new Date(Date.UTC(p.y, p.m-1, p.d + dayOffset, hour, minute||0) - off*60000);
+}
+function dateKey(tz, date){ const p = parts(date || new Date(), tz); return p.y + '-' + pad(p.m) + '-' + pad(p.d); }
+function clock(date, tz){ return new Intl.DateTimeFormat('en-GB',{timeZone:tz, hour:'numeric', minute:'2-digit', hour12:true}).format(date).replace(/\s?([ap])\.?m\.?/i,' $1m'); }
+function whenIn(iso, tz){
+  const d = new Date(iso); const t = clock(d, tz);
+  const k = dateKey(tz, d), today = dateKey(tz), tom = dateKey(tz, new Date(Date.now()+864e5));
+  if (k === today) return t;
+  if (k === tom) return 'tomorrow ' + t;
+  return new Intl.DateTimeFormat('en-GB',{timeZone:tz, weekday:'short'}).format(d) + ' ' + t;
+}
+function ago(iso){
+  const s = (Date.now() - Date.parse(iso))/1000;
+  if (!isFinite(s)) return '';
+  if (s < 60) return 'just now';
+  if (s < 3600) return Math.floor(s/60) + ' min ago';
+  if (s < 86400) return Math.floor(s/3600) + ' h ago';
+  if (s < 172800) return 'yesterday';
+  return new Intl.DateTimeFormat('en-GB',{day:'numeric', month:'short'}).format(new Date(iso));
+}
+/* a time as `viewer` should read it; with no viewer, both cities */
+function dualFor(iso, owner, viewer){
+  const t1 = tzOf(owner);
+  if (sameCity()) return whenIn(iso, t1);
+  if (viewer){
+    const t2 = tzOf(viewer);
+    if (t1 === t2) return whenIn(iso, t1);
+    return whenIn(iso, t1) + ' ' + PEOPLE[owner].his + ' time (' + whenIn(iso, t2) + ' yours)';
+  }
+  const o = other(owner);
+  return whenIn(iso, t1) + ' in ' + CITY_NAME[cityOf(owner)] + ' (' + whenIn(iso, tzOf(o)) + ' in ' + CITY_NAME[cityOf(o)] + ')';
+}
+function toast(msg){
+  const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove('show'), 2800);
+}
+function energyLabel(k){ const e = ENERGY.find(x=>x.k===k); return e ? e.label : ''; }
+function needOf(k){ return NEEDS.find(x=>x.k===k); }
+function latestCheckin(p){
+  const today = dateKey(tzOf(p));
+  return state.checkins.find(c => c.person === p && c.date === today) || null;
+}
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+function lsDel(k){ try{ localStorage.removeItem(k); }catch(e){} }
+
+/* ---------- crypto ---------- */
+function b64e(u8){ let s = ''; for (let i = 0; i < u8.length; i++) s += String.fromCharCode(u8[i]); return btoa(s); }
+function b64d(s){ const b = atob(s), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return u; }
+function normCode(c){ return String(c || '').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
+async function spaceId(code){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode('our-space|' + normCode(code)));
+  return Array.from(new Uint8Array(buf)).map(x => x.toString(16).padStart(2,'0')).join('').slice(0, 40);
+}
+function genCode(){
+  const r = crypto.getRandomValues(new Uint32Array(5));
+  const w = i => WORDS[r[i] % WORDS.length];
+  return w(0) + '-' + w(1) + '-' + w(2) + '-' + w(3) + '-' + String(1000 + (r[4] % 9000));
+}
+async function derive(pin, saltB64){
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pin), 'PBKDF2', false, ['deriveBits']);
+  const bits = new Uint8Array(await crypto.subtle.deriveBits({ name:'PBKDF2', salt:b64d(saltB64), iterations:150000, hash:'SHA-256' }, base, 512));
+  const key = await crypto.subtle.importKey('raw', bits.slice(32), 'AES-GCM', false, ['encrypt','decrypt']);
+  return { verifier:b64e(bits.slice(0, 32)), key };
+}
+async function encryptJSON(key, obj){
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const ct = new Uint8Array(await crypto.subtle.encrypt({ name:'AES-GCM', iv }, key, new TextEncoder().encode(JSON.stringify(obj))));
+  return { iv:b64e(iv), ct:b64e(ct) };
+}
+async function decryptJSON(key, rec){
+  const pt = await crypto.subtle.decrypt({ name:'AES-GCM', iv:b64d(rec.iv) }, key, b64d(rec.ct));
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+
+/* ---------- storage ---------- */
+function deepMerge(a, b){
+  const out = Object.assign({}, a);
+  for (const k in b){
+    if (b[k] && typeof b[k] === 'object' && !Array.isArray(b[k]) && a && a[k] && typeof a[k] === 'object' && !Array.isArray(a[k])) out[k] = deepMerge(a[k], b[k]);
+    else out[k] = b[k];
+  }
+  return out;
+}
+function localStore(sid){
+  const KEY = 'our-space-data-' + sid;
+  let data = { docs:{} };
+  try{ const raw = localStorage.getItem(KEY); if (raw) data = JSON.parse(raw) || data; }catch(e){}
+  if (!data.docs) data.docs = {};
+  const subs = new Set();
+  const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){} subs.forEach(f=>f()); };
+  const mint = () => Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+  return {
+    local:true,
+    async setDoc(p, v){ data.docs[p] = JSON.parse(JSON.stringify(v)); save(); },
+    async updateDoc(p, v){ data.docs[p] = deepMerge(data.docs[p] || {}, v); save(); },
+    async getDoc(p){ return data.docs[p] ? JSON.parse(JSON.stringify(data.docs[p])) : null; },
+    async addDoc(c, v){ const id = mint(); data.docs[c + '/' + id] = JSON.parse(JSON.stringify(v)); save(); return id; },
+    async deleteDoc(p){ delete data.docs[p]; save(); },
+    watchDoc(p, cb){ const f = () => cb(data.docs[p] || null); subs.add(f); f(); return () => subs.delete(f); },
+    watchColl(c, field, n, cb){
+      const f = () => {
+        const pre = c + '/';
+        const rows = Object.keys(data.docs).filter(k => k.indexOf(pre) === 0 && k.slice(pre.length).indexOf('/') < 0)
+          .map(k => Object.assign({ id:k.slice(pre.length) }, data.docs[k]));
+        rows.sort((a,b) => String(b[field]||'').localeCompare(String(a[field]||'')));
+        cb(rows.slice(0, n));
+      };
+      subs.add(f); f(); return () => subs.delete(f);
+    }
+  };
+}
+function fsStore(fs, sid){
+  const base = 'spaces/' + sid + '/';
+  const onErr = e => {
+    if (e && e.code === 'permission-denied') state.connErr = 'Couldn\u2019t reach your space. Check the database rules in the setup notes.';
+    else state.connErr = 'Connection problem. Changes will sync when you\u2019re back online.';
+    renderNotices();
+  };
+  return {
+    local:false,
+    setDoc:(p, v) => fs.doc(base + p).set(v),
+    updateDoc:(p, v) => fs.doc(base + p).set(v, { merge:true }),
+    async getDoc(p){ const s = await fs.doc(base + p).get(); return s.exists ? s.data() : null; },
+    async addDoc(c, v){ const r = await fs.collection(base + c).add(v); return r.id; },
+    deleteDoc:(p) => fs.doc(base + p).delete(),
+    watchDoc(p, cb){ return fs.doc(base + p).onSnapshot(s => { state.connErr = ''; cb(s.exists ? s.data() : null); }, onErr); },
+    watchColl(c, field, n, cb){
+      return fs.collection(base + c).orderBy(field, 'desc').limit(n)
+        .onSnapshot(s => cb(s.docs.map(d => Object.assign({ id:d.id }, d.data()))), onErr);
+    }
+  };
+}
+async function write(fn, okMsg){
+  if (!store){ toast('Still loading. Try again in a moment.'); return false; }
+  try{ await fn(); if (okMsg) toast(okMsg); return true; }
+  catch(e){
+    const code = e && e.code;
+    if (code === 'permission-denied') toast('Not allowed to save. Check the database rules in the setup notes.');
+    else if (code === 'resource-exhausted') toast('Too many saves at once. Wait a few seconds and try again.');
+    else toast(READONLY_MSG);
+    return false;
+  }
+}
+async function connect(){
+  const cfg = window.FIREBASE_CONFIG || {};
+  if (!cfg.apiKey || !window.firebase) return null;
+  try{
+    if (!firebase.apps.length) firebase.initializeApp(cfg);
+    await firebase.auth().signInAnonymously();
+    return firebase.firestore();
+  }catch(e){
+    console.error(e);
+    state.connErr = 'Couldn\u2019t connect. Check the setup steps (config and anonymous sign-in).';
+    return null;
+  }
+}
+
+/* ---------- header ---------- */
+function skyFor(hour){
+  if (hour < 5)  return { bg:'linear-gradient(162deg,#221D38 0%,#322A4E 58%,#453863 100%)', ink:'#F4EEF8', sub:'rgba(244,238,248,.7)' };
+  if (hour < 8)  return { bg:'linear-gradient(162deg,#F6CDB2 0%,#E2C2D4 55%,#BDAEDC 100%)', ink:'#3A2F45', sub:'rgba(58,47,69,.66)' };
+  if (hour < 17) return { bg:'linear-gradient(162deg,#DCD5F1 0%,#ECDDEC 55%,#F9E3D4 100%)', ink:'#3A2F45', sub:'rgba(58,47,69,.64)' };
+  if (hour < 20) return { bg:'linear-gradient(162deg,#F0AE84 0%,#C98381 50%,#76507A 100%)', ink:'#FFF6EF', sub:'rgba(255,246,239,.78)' };
+  return { bg:'linear-gradient(162deg,#2F2645 0%,#47365C 58%,#614466 100%)', ink:'#F4EEF8', sub:'rgba(244,238,248,.7)' };
+}
+function clockCell(p){
+  const tz = tzOf(p), now = new Date(), t = clock(now, tz), m = t.match(/^(.*?)\s?([ap]m)$/i);
+  const el = h('div', { class:'clock', 'aria-label': PEOPLE[p].name + ', ' + t + ' in ' + CITY_NAME[cityOf(p)] },
+    h('div', { class:'c-name', text:PEOPLE[p].name }),
+    h('div', { class:'c-time' }, m ? m[1] : t, m ? h('span', { class:'ampm', text:m[2] }) : null),
+    h('div', { class:'c-city', text:CITY_NAME[cityOf(p)] }));
+  const sky = skyFor(parts(now, tz).h);
+  el.style.background = sky.bg; el.style.color = sky.ink; el.style.setProperty('--sub', sky.sub);
+  return el;
+}
+function pauseIsLive(){ return !!(state.pause && state.pause.active && state.pause.until); }
+function bridge(){
+  const p = state.pause;
+  if (state.phase === 'app' && pauseIsLive()){
+    const who = p.by, overdue = Date.now() > Date.parse(p.until);
+    return h('p', { class:'bridge-line paused' }, h('strong', { text:PEOPLE[who].name }),
+      overdue ? '\u2019s pause time is up.' : ' is taking a breather until ' + dualFor(p.until, who) + '.');
+  }
+  if (state.phase === 'app' && p && !p.active && p.endedAt && Date.now() - Date.parse(p.endedAt) < 12*3600e3)
+    return h('p', { class:'bridge-line' }, PEOPLE[p.by].name + ' is back. Ready to talk.');
+  if (sameCity()) return h('p', { class:'bridge-line' }, 'Same city, same sky.');
+  const off = (tzOffsetMin(ZONES.kochi, new Date()) - tzOffsetMin(ZONES.milan, new Date())) / 60;
+  const hrs = Math.floor(Math.abs(off)), mins = Math.round((Math.abs(off) - hrs) * 60);
+  return h('p', { class:'bridge-line' }, hrs + ' h' + (mins ? ' ' + mins + ' min' : '') + ' apart. Not for long.');
+}
+function renderSkies(){
+  const el = document.getElementById('skies');
+  el.className = 'top';
+  el.replaceChildren(h('div', { class:'clocks' }, clockCell('sudipt'), clockCell('nayana')), bridge());
+}
+
+/* ---------- PIN lock ---------- */
+let lastActive = Date.now(), hiddenAt = 0;
+function touch(){ lastActive = Date.now(); }
+['pointerdown','keydown'].forEach(ev => document.addEventListener(ev, touch, { passive:true }));
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) hiddenAt = Date.now();
+  else { if (hiddenAt && Date.now() - hiddenAt > 2*60e3) lockAll(); hiddenAt = 0; }
+});
+function checkIdle(){ if (Object.keys(state.unlocked).length && Date.now() - lastActive > 5*60e3) lockAll(); }
+function lockAll(){
+  if (!Object.keys(state.unlocked).length) return;
+  state.unlocked = {}; state.notes = { sudipt:[], nayana:[] }; state.focus = { sudipt:[], nayana:[] }; state.focusOpen = {}; state.pin = null; state.sub = null;
+  state.d = { sudipt:newDraft(), nayana:newDraft() };
+  renderAll();
+}
+function openPersonSpace(p, sub){
+  if (state.view && state.view !== p) lockAll();
+  Object.keys(state.unlocked).forEach(k => { if (k !== p) delete state.unlocked[k]; });
+  state.view = p; state.sub = sub || null; state.pin = null; state.tab = 'us'; renderAll(); toTop();
+}
+function leaveSpace(){ state.view = null; state.sub = null; lockAll(); renderAll(); toTop(); }
+function pinState(p){
+  if (!state.pin || state.pin.person !== p) state.pin = { person:p, a:'', b:'', err:'', busy:false, fails:0, until:0, reset:false };
+  return state.pin;
+}
+async function loadNotes(p){
+  let rec = null;
+  try{ rec = await store.getDoc('notes/' + p); }catch(e){}
+  if (!rec || !rec.ct){ state.notes[p] = []; state.focus[p] = []; return; }
+  try{ const data = await decryptJSON(state.unlocked[p].key, rec); state.notes[p] = data.items || []; state.focus[p] = data.focus || []; }
+  catch(e){ state.notes[p] = []; state.focus[p] = []; toast('Couldn\u2019t open your notes with this PIN.'); }
+}
+async function saveNotes(p, items, msg){
+  if (!state.unlocked[p]) return false;
+  const rec = await encryptJSON(state.unlocked[p].key, { items, focus:state.focus[p] || [] });
+  const ok = await write(() => store.setDoc('notes/' + p, Object.assign(rec, { at:nowISO() })), msg);
+  if (ok) state.notes[p] = items;
+  return ok;
+}
+async function unlock(p){
+  const s = pinState(p);
+  if (Date.now() < s.until){ s.err = 'Too many tries. Wait a moment.'; renderMain(); return; }
+  if (!/^\d{4,8}$/.test(s.a)){ s.err = 'Enter your 4 to 8 digit PIN.'; renderMain(); return; }
+  s.busy = true; s.err = ''; renderMain();
+  try{
+    const rec = state.pins[p];
+    const r = await derive(s.a, rec.salt);
+    if (r.verifier !== rec.verifier){
+      s.fails++; s.a = ''; s.err = 'That PIN doesn\u2019t match.';
+      if (s.fails >= 5){ s.until = Date.now() + 30000; s.fails = 0; s.err = 'Too many tries. Try again in 30 seconds.'; }
+    } else {
+      state.unlocked[p] = { key:r.key }; state.d[p] = newDraft(); lsSet('os-me', p);
+      await loadNotes(p); state.pin = null; touch();
+    }
+  }catch(e){ s.err = 'This browser couldn\u2019t check the PIN. Try another browser.'; }
+  if (state.pin) state.pin.busy = false;
+  renderAll();
+}
+async function setPin(p){
+  const s = pinState(p);
+  if (!/^\d{4,8}$/.test(s.a)){ s.err = 'Use 4 to 8 digits. Six is safer.'; renderMain(); return; }
+  if (s.a !== s.b){ s.err = 'The two PINs don\u2019t match.'; s.b = ''; renderMain(); return; }
+  s.busy = true; renderMain();
+  try{
+    const salt = b64e(crypto.getRandomValues(new Uint8Array(16)));
+    const r = await derive(s.a, salt);
+    const ok = await write(() => store.setDoc('pins/' + p, { salt, verifier:r.verifier, at:nowISO() }));
+    if (ok){
+      state.pins[p] = { salt, verifier:r.verifier }; state.unlocked[p] = { key:r.key };
+      state.notes[p] = []; state.focus[p] = []; state.pin = null; state.d[p] = newDraft(); lsSet('os-me', p); touch();
+      toast('PIN set. Your space is ready.');
+    }
+  }catch(e){ s.err = 'This browser couldn\u2019t set a PIN. Try another browser.'; }
+  if (state.pin) state.pin.busy = false;
+  renderAll();
+}
+async function resetPin(p){
+  const ok = await write(async () => { await store.deleteDoc('notes/' + p); await store.deleteDoc('pins/' + p); });
+  if (ok){ state.pins[p] = null; state.notes[p] = []; state.pin = null; toast('PIN cleared. Set a new one.'); }
+  renderAll();
+}
+async function changePin(p){
+  const d = state.d[p];
+  if (!/^\d{4,8}$/.test(d.newPin)){ toast('Use 4 to 8 digits for the new PIN.'); return; }
+  if (d.newPin !== d.newPin2){ toast('The two new PINs don\u2019t match.'); return; }
+  try{
+    const salt = b64e(crypto.getRandomValues(new Uint8Array(16)));
+    const r = await derive(d.newPin, salt);
+    const rec = await encryptJSON(r.key, { items:state.notes[p], focus:state.focus[p] || [] });
+    const ok = await write(async () => {
+      await store.setDoc('pins/' + p, { salt, verifier:r.verifier, at:nowISO() });
+      await store.setDoc('notes/' + p, Object.assign(rec, { at:nowISO() }));
+    }, 'PIN changed.');
+    if (ok){ state.unlocked[p] = { key:r.key }; state.pins[p] = { salt, verifier:r.verifier }; d.newPin = ''; d.newPin2 = ''; d.showPinChange = false; renderMain(); }
+  }catch(e){ toast('Couldn\u2019t change the PIN on this browser.'); }
+}
+function pinView(p){
+  const s = pinState(p), has = !!state.pins[p], name = PEOPLE[p].name;
+  if (!state.pinsLoaded[p]) return h('div', { class:'pin-wrap' }, h('p', { class:'muted', text:'Loading\u2026' }));
+  const onKey = e => { if (e.key === 'Enter'){ e.preventDefault(); has ? unlock(p) : setPin(p); } };
+  return h('div', { class:'pin-wrap' },
+    h('h2', { text: has ? name + '\u2019s space' : 'Set up ' + name + '\u2019s space' }),
+    h('p', { class:'muted', style:'margin-bottom:16px', text: has ? 'Enter your PIN to open it.' : 'Choose a 4 to 8 digit PIN. Only you should know it. Your private notes are locked with it.' }),
+    h('label', { class:'label', for:'pin-a', text: has ? 'PIN' : 'New PIN' }),
+    h('input', { class:'field pin-input', id:'pin-a', type:'password', inputmode:'numeric', autocomplete:'off', maxlength:'8', value:s.a,
+      oninput: e => { s.a = e.target.value.replace(/\D/g,''); e.target.value = s.a; }, onkeydown:onKey }),
+    has ? null : h('div', { style:'margin-top:10px' },
+      h('label', { class:'label', for:'pin-b', text:'Type it again' }),
+      h('input', { class:'field pin-input', id:'pin-b', type:'password', inputmode:'numeric', autocomplete:'off', maxlength:'8', value:s.b,
+        oninput: e => { s.b = e.target.value.replace(/\D/g,''); e.target.value = s.b; }, onkeydown:onKey })),
+    h('p', { class:'err', role:'alert', text:s.err }),
+    h('div', { class:'row', style:'margin-top:6px' },
+      h('button', { class:'btn', disabled:s.busy, onclick: () => has ? unlock(p) : setPin(p) }, s.busy ? 'Checking\u2026' : (has ? 'Open' : 'Set PIN')),
+      h('button', { class:'btn secondary', onclick: leaveSpace }, 'Back'),
+      h('button', { class:'linkish small', style:'margin-left:auto', onclick: () => { state.view = null; state.pin = null; state.tab = 'me'; state.homeBoth = true; renderAll(); } }, 'Not ' + name + '?')
+    ),
+    has ? h('div', { style:'margin-top:26px' },
+      s.reset
+        ? h('div', {},
+            h('p', { class:'small', text:'Resetting deletes ' + name + '\u2019s private notes. Check-ins and everything shared stay.' }),
+            h('div', { class:'row', style:'margin-top:8px' },
+              h('button', { class:'btn secondary small', onclick: () => resetPin(p) }, 'Delete notes and reset PIN'),
+              h('button', { class:'linkish small', onclick: () => { s.reset = false; renderMain(); } }, 'Cancel')))
+        : h('button', { class:'linkish small', onclick: () => { s.reset = true; renderMain(); } }, 'Forgot your PIN?')
+    ) : null
+  );
+}
+
+/* ---------- notifications ---------- */
+const NOTIF_TYPES = [['pause','Pauses'], ['thanks','Thank-yous'], ['requests','Requests'], ['calendar','New dates'], ['promises','Promises'], ['daily','Anniversary and day reminders'], ['checkins','Check-ins']];
+function defaultPrefs(){ return { pause:true, thanks:true, requests:true, calendar:true, promises:true, daily:true, checkins:false }; }
+const notif = { deviceId:null, person:null, prefs:defaultPrefs(), busy:false, err:'', loaded:false, listening:false };
+function isIOS(){ return /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); }
+function isStandalone(){ return window.navigator.standalone === true || (window.matchMedia && matchMedia('(display-mode: standalone)').matches); }
+function pushSupport(){
+  const has = ('serviceWorker' in navigator) && ('Notification' in window) && ('PushManager' in window);
+  if (!has) return (isIOS() && !isStandalone()) ? 'ios-browser' : 'unsupported';
+  if (isIOS() && !isStandalone()) return 'ios-browser';
+  if (state.mode !== 'synced' || !window.firebase || !firebase.messaging || !window.FIREBASE_VAPID_KEY) return 'not-configured';
+  return 'ok';
+}
+async function sha256hex(t){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
+  return Array.from(new Uint8Array(buf)).map(x => x.toString(16).padStart(2,'0')).join('');
+}
+function appBaseUrl(){ return location.origin + location.pathname.replace(/[^/]*$/, ''); }
+async function swRegistration(){
+  const url = 'firebase-messaging-sw.js?c=' + encodeURIComponent(JSON.stringify(window.FIREBASE_CONFIG));
+  await navigator.serviceWorker.register(url, { scope:'./' });
+  return navigator.serviceWorker.ready;
+}
+function listenForeground(){
+  if (notif.listening || pushSupport() !== 'ok' || Notification.permission !== 'granted') return;
+  try{
+    firebase.messaging().onMessage(m => { const n = (m && m.notification) || {}; toast((n.title || 'Our Space') + (n.body ? ': ' + n.body : '')); });
+    notif.listening = true;
+  }catch(e){}
+}
+async function loadDevice(){
+  notif.deviceId = lsGet('os-device'); notif.loaded = true;
+  if (!notif.deviceId || !store) return;
+  try{
+    const d = await store.getDoc('devices/' + notif.deviceId);
+    if (!d){ lsDel('os-device'); notif.deviceId = null; return; }
+    notif.person = d.person || null; notif.prefs = Object.assign(defaultPrefs(), d.prefs || {});
+  }catch(e){}
+  listenForeground();
+}
+async function enableNotifications(p){
+  notif.busy = true; notif.err = ''; renderMain();
+  try{
+    const perm = await Notification.requestPermission();
+    if (perm !== 'granted'){
+      notif.err = perm === 'denied' ? 'Notifications are blocked. Turn them on in Settings \u2192 Notifications \u2192 Our Space.' : 'Notifications weren\u2019t allowed.';
+      return;
+    }
+    const reg = await swRegistration();
+    const token = await firebase.messaging().getToken({ vapidKey:window.FIREBASE_VAPID_KEY, serviceWorkerRegistration:reg });
+    if (!token) throw new Error('no token');
+    const id = (await sha256hex(token)).slice(0, 32);
+    const prefs = Object.assign(defaultPrefs(), notif.prefs || {});
+    if (notif.deviceId && notif.deviceId !== id){ try{ await store.deleteDoc('devices/' + notif.deviceId); }catch(e){} }
+    await store.setDoc('devices/' + id, { person:p, token, prefs, at:nowISO() });
+    if (state.settings.appUrl !== appBaseUrl()){ try{ await store.updateDoc('couple/settings', { appUrl:appBaseUrl() }); }catch(e){} }
+    lsSet('os-device', id); notif.deviceId = id; notif.person = p; notif.prefs = prefs;
+    listenForeground();
+    toast('Notifications are on for this phone.');
+  }catch(e){
+    console.error(e);
+    notif.err = 'Couldn\u2019t turn on notifications. Check the setup notes, then try again.';
+  }finally{ notif.busy = false; renderMain(); }
+}
+async function setPref(k, v){
+  notif.prefs = Object.assign({}, notif.prefs, { [k]:v }); renderMain();
+  await write(() => store.updateDoc('devices/' + notif.deviceId, { prefs:{ [k]:v } }));
+}
+async function disableNotifications(){
+  const id = notif.deviceId; if (!id) return;
+  try{ const reg = await navigator.serviceWorker.getRegistration('./'); if (reg) await firebase.messaging().deleteToken(); }catch(e){}
+  await write(() => store.deleteDoc('devices/' + id), 'Notifications are off for this phone.');
+  lsDel('os-device'); notif.deviceId = null; notif.person = null; renderMain();
+}
+function notifBlock(p){
+  const sup = pushSupport();
+  const head = [h('h2', { text:'Notifications' }), h('p', { class:'lead', text:'Get a ping on this phone when something happens between you two.' })];
+  let body;
+  if (sup === 'ios-browser') body = h('p', { class:'muted', text:'Open Our Space from its home screen icon to turn these on. iPhone only allows notifications there.' });
+  else if (sup === 'unsupported') body = h('p', { class:'muted', text:'This browser can\u2019t receive notifications.' });
+  else if (sup === 'not-configured') body = h('p', { class:'muted', text:'Notifications aren\u2019t set up yet.' });
+  else if (Notification.permission === 'denied') body = h('p', { class:'muted', text:'Notifications are blocked for Our Space. Turn them on in Settings \u2192 Notifications \u2192 Our Space.' });
+  else if (!notif.deviceId || Notification.permission !== 'granted') body = h('div', {},
+      h('button', { class:'btn', disabled:notif.busy, onclick: () => enableNotifications(p) }, notif.busy ? 'Turning on\u2026' : 'Turn on notifications'),
+      h('p', { class:'err', role:'alert', text:notif.err }));
+  else if (notif.person && notif.person !== p) body = h('div', {},
+      h('p', { class:'muted', style:'margin-bottom:10px', text:'This phone gets ' + PEOPLE[notif.person].name + '\u2019s notifications.' }),
+      h('button', { class:'btn secondary', disabled:notif.busy, onclick: () => enableNotifications(p) }, 'Send them to me instead'));
+  else body = h('div', {},
+      h('span', { class:'label', id:'lbl-notif', text:'Tell me about' }),
+      h('div', { class:'chips', role:'group', 'aria-labelledby':'lbl-notif' },
+        NOTIF_TYPES.map(([k, label]) => h('button', { class:'chip', 'aria-pressed': notif.prefs[k] ? 'true' : 'false', onclick: () => setPref(k, !notif.prefs[k]) }, label))),
+      h('p', { class:'muted small', style:'margin-top:10px', text:'You\u2019ll only hear about things ' + PEOPLE[other(p)].name + ' does, never your own.' }),
+      h('button', { class:'linkish small', style:'margin-top:10px', onclick: disableNotifications }, 'Turn off on this phone'));
+  return h('section', { class:'block' }, head, body);
+}
+
+/* ---------- personal tips ---------- */
+function fillIdea(t, p){
+  const o = other(p), O = PEOPLE[o];
+  return t.replace(/\{O\}/g, O.name).replace(/\{him\}/g, O.him).replace(/\{his\}/g, O.his).replace(/\{he\}/g, O.he);
+}
+function partnerHint(c, partner){
+  const pr = PEOPLE[partner], He = cap(pr.he);
+  const map = {
+    heard:'Asking about ' + pr.his + ' day and simply listening would mean a lot.',
+    space:'A little room is the kindest thing today. One short, warm message is plenty.',
+    reassure:'A simple \u201cI love you, I\u2019m not going anywhere\u201d could mean a lot.',
+    help:'Asking \u201cWhat would help most?\u201d is a great place to start.',
+    fun:'A silly photo or a small plan would land well.'
+  };
+  const lines = [];
+  if (map[c.need]) lines.push(map[c.need]);
+  if (c.energy === 'lowcap' || c.energy === 'low') lines.push(He + '\u2019s running low, so bigger topics can wait for another day.');
+  return lines.join(' ');
+}
+async function toggleFocus(p, k){
+  const cur = normFocus(state.focus[p]), i = cur.indexOf(k);
+  if (i >= 0) cur.splice(i, 1);
+  else { if (cur.length >= 3){ toast('Pick up to 3. Unselect one first.'); return; } cur.push(k); }
+  state.focus[p] = cur; state.ideaShift = 0; renderMain();
+  await saveNotes(p, state.notes[p] || [], null);
+}
+function patternById(k){
+  if (k && k.indexOf('c:') === 0){
+    const c = state.patterns.find(x => x.id === k.slice(2));
+    return c ? { k, title:c.title, what:'', roles:[['What could help', c.help || []]], custom:true } : null;
+  }
+  return PATTERNS.find(x => x.k === k) || null;
+}
+function allPatterns(){ return PATTERNS.concat(state.patterns.map(c => ({ k:'c:' + c.id, title:c.title, what:'', roles:[['What could help', c.help || []]], custom:true, id:c.id }))); }
+function ideaPool(p){
+  const pool = [], O = PEOPLE[other(p)];
+  state.requests.filter(r => r.to === p && r.status === 'accepted').forEach(r => {
+    const f = focusOf(r.focus); if (f) f.ideas.forEach(t => pool.push({ text:fillIdea(t, p), from:O.name + ' asked for this' }));
+  });
+  let chosen = normFocus(state.focus[p]);
+  if (!chosen.length && !pool.length) chosen = DEFAULT_PATTERNS;
+  const personal = t => t.replace(/\bthe other\u2019s\b/g, O.name + '\u2019s').replace(/\bthe other\b/g, O.name).replace(/about them\./, 'about ' + O.him + '.');
+  chosen.forEach(k => { const pt = patternById(k); if (pt) pt.roles.forEach(r => r[1].forEach(t => pool.push({ text:personal(t), from:pt.title }))); });
+  return pool;
+}
+function todaysIdea(p){
+  const pool = ideaPool(p); if (!pool.length) return null;
+  const day = Math.floor(Date.now() / 864e5);
+  return pool[(day * 7 + state.ideaShift) % pool.length];
+}
+function spaceBanner(p){
+  const o = other(p), O = PEOPLE[o], now = Date.now(), z = state.pause;
+  const inc = state.requests.filter(r => r.to === p && r.status === 'open').length;
+  if (inc) return { text:O.name + ' asked for something small.', act:'View', sub:'requests' };
+  if (pauseIsLive() && z.by === o) return { text: now > Date.parse(z.until)
+    ? O.name + '\u2019s pause time is up. A gentle \u201cI\u2019m here whenever you\u2019re ready\u201d is perfect.'
+    : O.name + ' is taking a breather until ' + dualFor(z.until, o, p) + '. Some space is the kindest thing right now.' };
+  if (pauseIsLive() && z.by === p) return { text: now > Date.parse(z.until) ? 'Your pause time is up. A short message is enough to start.' : 'You\u2019re taking a breather until ' + dualFor(z.until, p, p) + '.', act:'Open', sub:'pause' };
+  const pd = parts(new Date(), tzOf(p)), tmr = parts(new Date(now + 864e5), tzOf(p));
+  if (pd.d === 3) return { text:'Happy anniversary. Make a little time for each other today.' };
+  if (tmr.d === 3) return { text:'Your anniversary is tomorrow. Something small for ' + O.him + ' would be lovely.' };
+  const oc = latestCheckin(o);
+  if (oc){ const n = needOf(oc.need), t = partnerHint(oc, o); if (n && t) return { text:O.name + ' would like ' + n.phrase + ' today. ' + t }; }
+  const ev = occurrencesOn(dateKey(tzOf(p))).filter(x => !x.anniv)[0];
+  if (ev) return { text:'On the calendar today: ' + ev.title + (ev.time ? ', ' + eventTimeText(ev, dateKey(tzOf(p))) : '') + '.' };
+  return null;
+}
+function goodNews(p){
+  const o = other(p), O = PEOPLE[o], week = Date.now() - 7*864e5, month = dateKey(tzOf(p)).slice(0, 7);
+  const acc = state.requests.filter(r => r.from === p && r.status === 'accepted' && r.respondedAt && Date.parse(r.respondedAt) > week).length;
+  if (acc) return O.name + ' is working on what you asked for.';
+  const got = state.apps.filter(a => a.to === p && Date.parse(a.at) > week).length;
+  if (got) return O.name + ' sent you ' + (got === 1 ? 'a thank-you' : got + ' thank-yous') + ' this week.';
+  const kept = state.promises.filter(x => x.by === p && x.status === 'kept' && x.closedAt && dateKey(tzOf(p), new Date(x.closedAt)).slice(0, 7) === month).length;
+  if (kept) return 'You\u2019ve kept ' + kept + ' promise' + (kept > 1 ? 's' : '') + ' this month. That\u2019s trust being built.';
+  if (latestCheckin(p) && latestCheckin(o)) return 'You both checked in today. Nice.';
+  return null;
+}
+function focusView(p){
+  const mine = normFocus(state.focus[p]), acc = state.requests.filter(r => r.to === p && r.status === 'accepted');
+  return h('div', {},
+    h('section', { class:'block' },
+      h('h2', { text:'What I\u2019m working on' }),
+      h('p', { class:'lead', text:'Pick up to 3 things that get you stuck. Your daily idea comes from these. Only you can see this.' }),
+      h('div', { class:'list', role:'group', 'aria-label':'Things to work on' }, allPatterns().map(pt => {
+        const on = mine.includes(pt.k);
+        return h('button', { class:'list-row' + (on ? ' on' : ''), 'aria-pressed': on ? 'true' : 'false', onclick: () => toggleFocus(p, pt.k) },
+          h('span', { class:'row-main' }, h('span', { text:pt.title }), pt.custom ? h('span', { class:'sub', text:'Added by you two' }) : null),
+          h('span', { class:'check', 'aria-hidden':'true', text: on ? '\u2713' : '' }));
+      })),
+      acc.length ? h('p', { class:'small', style:'margin-top:12px', text:'Also in your ideas, because ' + PEOPLE[other(p)].name + ' asked: ' + acc.map(r => focusOf(r.focus) ? focusOf(r.focus).label.toLowerCase() : '').filter(Boolean).join(', ') + '.' }) : null),
+    mine.length ? h('section', { class:'block' },
+      h('h2', { text:'Ideas for these' }),
+      mine.map(k => { const pt = patternById(k); return pt ? h('div', { class:'pattern-body', style:'margin-top:12px' },
+        h('p', { style:'font-weight:600', text:pt.title }),
+        pt.roles.map(r => [h('p', { class:'role', text:r[0] }), h('ul', {}, r[1].map(t => h('li', { text:t })))])) : null; })) : null
+  );
+}
+/* ---------- requests ---------- */
+function focusOf(k){ return FOCUS.find(f => f.k === k) || null; }
+function myActiveRequests(p){ return state.requests.filter(r => r.from === p && (r.status === 'open' || r.status === 'accepted' || r.status === 'talk')); }
+async function sendRequest(p){
+  const d = state.d[p];
+  if (!d.reqFocus){ toast('Pick one thing to ask for.'); return; }
+  if (myActiveRequests(p).length >= 2){ toast('You have 2 requests going. Wait for one to wrap up, or withdraw one.'); return; }
+  const ok = await write(() => store.addDoc('requests', { from:p, to:other(p), focus:d.reqFocus, note:(d.reqNote || '').trim().slice(0, 200), status:'open', at:nowISO() }),
+    'Sent to ' + PEOPLE[other(p)].name + '.');
+  if (ok){ d.reqFocus = null; d.reqNote = ''; renderMain(); }
+}
+async function respondRequest(id, status){
+  const msg = status === 'accepted' ? 'Added to your ideas. Thank you.' : status === 'talk' ? 'Added to your Sunday check-in.' : status === 'done' ? 'Marked as done.' : status === 'closed' ? 'Marked as talked about.' : null;
+  await write(() => store.updateDoc('requests/' + id, { status, respondedAt:nowISO() }), msg);
+}
+async function withdrawRequest(id){ await write(() => store.deleteDoc('requests/' + id), 'Request withdrawn.'); }
+function requestLine(r){ const f = focusOf(r.focus); return f ? f.ask : 'something small'; }
+function requestsBlock(p){
+  const o = other(p), O = PEOPLE[o], d = state.d[p];
+  const incoming = state.requests.filter(r => r.to === p && (r.status === 'open' || r.status === 'accepted' || r.status === 'talk'));
+  const sent = myActiveRequests(p);
+  const statusText = r => r.status === 'accepted' ? O.name + ' is working on this' : r.status === 'talk' ? 'On your Sunday list' : 'Waiting for ' + O.name;
+  return h('div', {},
+    incoming.length ? h('section', { class:'block' },
+      h('h2', { text:'From ' + O.name }),
+      h('ul', { class:'feed boxed', style:'margin-top:10px' }, incoming.map(r => h('li', {},
+        h('div', { class:'meta', text:ago(r.at) }),
+        h('p', { class:'req-text', text:O.name + ' would love it if you\u2019d ' + requestLine(r) + '.' }),
+        r.note ? h('p', { class:'bubble from-' + r.from, text:r.note }) : null,
+        r.status === 'open' ? h('div', { class:'row', style:'margin-top:12px' },
+            h('button', { class:'btn small', onclick: () => respondRequest(r.id, 'accepted') }, 'I\u2019ll work on this'),
+            h('button', { class:'btn secondary small', onclick: () => respondRequest(r.id, 'talk') }, 'Let\u2019s talk about it'))
+          : r.status === 'accepted' ? h('div', { class:'row', style:'margin-top:12px' },
+            h('span', { class:'tag good', text:'Working on it' }),
+            h('button', { class:'linkish small', onclick: () => respondRequest(r.id, 'done') }, 'Feels like a habit now'))
+          : h('div', { class:'row', style:'margin-top:12px' }, h('span', { class:'tag', text:'On your Sunday list' })))))) : null,
+    h('section', { class:'block' },
+      h('h2', { text:'Ask ' + O.name + ' for something' }),
+      h('p', { class:'lead', text:'One small thing you\u2019d love more of. ' + O.name + ' can take it on, or suggest you talk it through on Sunday.' }),
+      sent.length < 2 ? [
+        h('div', { class:'list', role:'radiogroup', 'aria-label':'What to ask for' }, FOCUS.map(f => {
+          const on = d.reqFocus === f.k;
+          return h('button', { class:'list-row' + (on ? ' on' : ''), role:'radio', 'aria-checked': on ? 'true' : 'false', onclick: () => { d.reqFocus = on ? null : f.k; renderMain(); } },
+            h('span', { text:f.chip }), h('span', { class:'check', 'aria-hidden':'true', text: on ? '\u2713' : '' }));
+        })),
+        d.reqFocus ? h('div', { style:'margin-top:14px' },
+          h('p', { class:'bubble from-' + p, text:'\u201cIt would mean a lot to me if you\u2019d ' + focusOf(d.reqFocus).ask + '.\u201d' }),
+          h('label', { class:'label', for:'req-note', style:'margin-top:12px', text:'Anything specific? (optional)' }),
+          h('input', { class:'field', id:'req-note', maxlength:'200', placeholder:'A small example helps', value:d.reqNote, oninput: e => { d.reqNote = e.target.value; } }),
+          h('div', { class:'row', style:'margin-top:12px' }, h('button', { class:'btn', onclick: () => sendRequest(p) }, 'Send request'))) : null
+      ] : h('p', { class:'muted', text:'You have 2 requests going. Once one wraps up, you can ask for another.' }),
+      sent.length ? h('ul', { class:'feed boxed', style:'margin-top:16px' }, sent.map(r => h('li', {},
+        h('div', { class:'meta', text:statusText(r) }),
+        h('p', { text:'You asked ' + O.name + ' to ' + requestLine(r) + '.' }),
+        r.status === 'open' ? h('button', { class:'linkish small', style:'margin-top:6px', onclick: () => withdrawRequest(r.id) }, 'Withdraw') : null))) : null)
+  );
+}
+/* ---------- pause ---------- */
+function pauseOptions(p){
+  const tz = tzOf(p), now = Date.now(), opts = [];
+  opts.push({ k:'1h', label:'1 hour', at:new Date(now + 3600e3) });
+  opts.push({ k:'3h', label:'3 hours', at:new Date(now + 3*3600e3) });
+  const tonight = zonedAt(tz, 0, 21, 0);
+  if (tonight.getTime() > now + 45*60e3) opts.push({ k:'tonight', label:'Tonight, 9 pm', at:tonight });
+  const morning = zonedAt(tz, 1, 10, 0);
+  if (morning.getTime() - now <= 24*3600e3) opts.push({ k:'morning', label:'Tomorrow, 10 am', at:morning });
+  opts.push({ k:'custom', label:'Pick a time', at:null });
+  return opts;
+}
+function pickedPauseTime(p){
+  const d = state.d[p], o = pauseOptions(p).find(x => x.k === d.pauseOpt);
+  if (!o) return null;
+  if (o.k === 'custom'){ const t = Date.parse(d.pauseCustom); return isFinite(t) ? new Date(t) : null; }
+  return o.at;
+}
+async function startPause(p){
+  const d = state.d[p], at = pickedPauseTime(p);
+  if (!at){ toast('Pick when you\u2019ll be back.'); return; }
+  const now = Date.now(); let u = at.getTime(), capped = false;
+  if (u < now + 10*60e3){ toast('Pick a time at least 10 minutes away.'); return; }
+  if (u > now + 24*3600e3){ u = now + 24*3600e3; capped = true; }
+  const ok = await write(() => store.setDoc('couple/pause', {
+    active:true, by:p, until:new Date(u).toISOString(), note:(d.pauseNote || '').trim().slice(0, 240), startedAt:nowISO()
+  }));
+  if (ok){
+    d.pauseNote = ''; d.pauseOpt = null; d.pauseCustom = '';
+    toast(capped ? 'Pause started, capped at 24 hours.' : 'Pause started. ' + PEOPLE[other(p)].name + ' can see when you\u2019ll be back.');
+  }
+}
+async function endPause(p){
+  const z = state.pause || {};
+  await write(() => store.setDoc('couple/pause', { active:false, by:z.by || p, until:z.until || null, startedAt:z.startedAt || null, endedAt:nowISO() }), 'You\u2019re back. Time to talk.');
+}
+async function extendPause(){
+  const z = state.pause; if (!z) return;
+  const now = Date.now(), until = Date.parse(z.until), lim = Date.parse(z.startedAt) + 24*3600e3;
+  const base = Math.max(until, now), u = Math.min(base + 3600e3, lim);
+  if (u <= base){ toast('A pause can\u2019t run past 24 hours. Reach out now, even briefly.'); return; }
+  await write(() => store.updateDoc('couple/pause', { until:new Date(u).toISOString(), reminded:false }), 'Added an hour.');
+}
+function copyText(txt, msg){
+  const fail = () => toast('Copy didn\u2019t work here. Type it instead.');
+  try{
+    if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(() => toast(msg || 'Copied.'), fail); return; }
+  }catch(e){}
+  fail();
+}
+function pauseBlock(me){
+  const z = state.pause, partner = other(me), d = state.d[me];
+  if (pauseIsLive()){
+    const mine = z.by === me, overdue = Date.now() > Date.parse(z.until), pr = PEOPLE[z.by];
+    if (mine){
+      return h('div', { class:'pause-panel active' },
+        h('h2', { text: overdue ? 'Your pause time is up' : 'You\u2019re taking a breather' }),
+        h('p', { text: overdue
+          ? 'Whenever you\u2019re ready, a short message is enough to start. If you need longer, add an hour.'
+          : 'Until ' + dualFor(z.until, me, me) + '. Take the time you need; ' + PEOPLE[partner].name + ' can see when you\u2019ll be back.' }),
+        z.note ? h('p', { class:'bubble from-' + me, text:z.note }) : null,
+        h('div', { class:'row', style:'margin-top:14px' },
+          h('button', { class:'btn', onclick: () => endPause(me) }, 'I\u2019m back, ready to talk'),
+          h('button', { class:'btn secondary', onclick: extendPause }, 'Add 1 hour')
+        )
+      );
+    }
+    const backAt = clock(new Date(z.until), tzOf(me));
+    const msg = 'Ok. Love you. Talk at ' + backAt.replace(':00','') + '.';
+    return h('div', { class:'pause-panel active' },
+      h('h2', { text: overdue ? pr.name + '\u2019s pause time is up' : pr.name + ' is taking a breather' }),
+      h('p', { text: overdue
+        ? 'A gentle \u201cHey, I\u2019m here whenever you\u2019re ready\u201d is perfect.'
+        : 'Back ' + dualFor(z.until, z.by, me) + '. If you\u2019d like, send something short and warm:' }),
+      z.note ? h('p', { class:'bubble from-' + z.by, text: pr.name + ': ' + z.note }) : null,
+      overdue ? null : h('div', { class:'say' }, msg),
+      overdue ? null : h('div', { class:'row' }, h('button', { class:'btn secondary small', onclick: () => copyText(msg, 'Copied. Paste it into WhatsApp.') }, 'Copy message')),
+      h('p', { class:'muted small', style:'margin-top:12px', text:'Meanwhile, maybe do something that helps you feel good.' })
+    );
+  }
+  const opts = pauseOptions(me), at = pickedPauseTime(me);
+  return h('div', { class:'pause-panel' },
+    h('h2', { text:'Need a breather?' }),
+    h('p', { class:'muted', style:'margin-bottom:12px', text:'Pick when you\u2019ll be back, so you both know. Up to 24 hours.' }),
+    h('div', { class:'chips', role:'group', 'aria-label':'Back by' },
+      opts.map(o => h('button', { class:'chip', 'aria-pressed': d.pauseOpt === o.k ? 'true' : 'false', onclick: () => { d.pauseOpt = o.k; renderMain(); } }, o.label))),
+    d.pauseOpt === 'custom' ? h('div', { style:'margin-top:12px' },
+      h('label', { class:'label', for:'pause-custom', text:'Back at (your time)' }),
+      h('input', { class:'field', id:'pause-custom', type:'datetime-local', value:d.pauseCustom,
+        oninput: e => { d.pauseCustom = e.target.value; }, onchange: () => renderMain() })) : null,
+    h('div', { style:'margin-top:12px' },
+      h('label', { class:'label', for:'pause-note', text:'Anything ' + PEOPLE[partner].name + ' should know? (optional)' }),
+      h('input', { class:'field', id:'pause-note', maxlength:'240', placeholder:'Not leaving, just calming down', value:d.pauseNote,
+        oninput: e => { d.pauseNote = e.target.value; } })),
+    h('div', { class:'row', style:'margin-top:14px' },
+      h('button', { class:'btn pause', onclick: () => startPause(me), disabled: !d.pauseOpt }, 'Start pause'),
+      at ? h('span', { class:'muted small', text:'Back ' + dualFor(at.toISOString(), me, me) }) : null
+    )
+  );
+}
+
+/* ---------- check-ins ---------- */
+async function saveCheckin(p){
+  const d = state.d[p];
+  if (!d.energy || !d.need){ toast('Pick how you\u2019re doing and what you need.'); return; }
+  const key = dateKey(tzOf(p));
+  const ok = await write(() => store.setDoc('checkins/' + p + '-' + key, {
+    person:p, date:key, energy:d.energy, need:d.need, note:(d.ciNote || '').trim().slice(0, 200), at:nowISO()
+  }), 'Check-in saved. ' + PEOPLE[other(p)].name + ' can see it.');
+  if (ok) d.ciDirty = false;
+}
+function checkinBlock(p){
+  const mine = latestCheckin(p), d = state.d[p];
+  if (mine && !d.ciDirty){ d.energy = mine.energy; d.need = mine.need; d.ciNote = mine.note || ''; }
+  const set = (k, v) => { d[k] = v; d.ciDirty = true; renderMain(); };
+  return h('section', { class:'block' },
+    h('h2', { text:'How are you today?' }),
+    h('p', { class:'lead', text:'Tell each other directly, so nobody has to read between the lines.' }),
+    h('div', { class:'stack' },
+      h('div', {},
+        h('span', { class:'label', id:'lbl-energy', text:'Energy' }),
+        h('div', { class:'chips', role:'group', 'aria-labelledby':'lbl-energy' },
+          ENERGY.map(e => h('button', { class:'chip', 'aria-pressed': d.energy === e.k ? 'true' : 'false', onclick: () => set('energy', e.k) }, e.label)))),
+      h('div', {},
+        h('span', { class:'label', id:'lbl-need', text:'What I need most today' }),
+        h('div', { class:'chips', role:'group', 'aria-labelledby':'lbl-need' },
+          NEEDS.map(n => h('button', { class:'chip', 'aria-pressed': d.need === n.k ? 'true' : 'false', onclick: () => set('need', n.k) }, n.label)))),
+      h('div', {},
+        h('label', { class:'label', for:'ci-note', text:'One line about your day (optional)' }),
+        h('input', { class:'field', id:'ci-note', maxlength:'200', value:d.ciNote, oninput: e => { d.ciNote = e.target.value; d.ciDirty = true; } })),
+      h('div', { class:'row' },
+        h('button', { class:'btn', onclick: () => saveCheckin(p) }, mine ? 'Update check-in' : 'Save check-in'),
+        mine ? h('span', { class:'muted small', text:'Saved ' + ago(mine.at) }) : null)
+    )
+  );
+}
+function partnerBlock(me){
+  const p = other(me), c = latestCheckin(p), pr = PEOPLE[p];
+  return h('section', { class:'block' },
+    h('h2', { text: pr.name + ' today' }),
+    c ? h('div', { class:'partner' },
+        h('div', { class:'row' },
+          h('span', { class:'tag' + (c.energy === 'lowcap' || c.energy === 'low' ? ' warn' : (c.energy === 'full' ? ' good' : '')), text:energyLabel(c.energy) }),
+          needOf(c.need) ? h('span', { class:'tag', text:'Needs ' + needOf(c.need).phrase }) : null,
+          h('span', { class:'muted small', text:ago(c.at) })),
+        c.note ? h('p', { class:'bubble from-' + p, text:c.note }) : null,
+        h('p', { class:'hint', text:partnerHint(c, p) }))
+      : h('p', { class:'empty', text: pr.name + ' hasn\u2019t checked in yet today.' })
+  );
+}
+
+/* ---------- thanks & promises (compose in own space) ---------- */
+async function sendAppreciation(p){
+  const d = state.d[p], t = (d.apprText || '').trim();
+  if (t.length < 4){ toast('Write something specific first.'); return; }
+  const ok = await write(() => store.addDoc('appreciations', { from:p, to:other(p), text:t.slice(0, 600), at:nowISO() }), 'Sent to ' + PEOPLE[other(p)].name + '.');
+  if (ok){ d.apprText = ''; renderMain(); }
+}
+function thanksCompose(p){
+  const d = state.d[p], o = PEOPLE[other(p)];
+  return h('section', { class:'block' },
+    h('h2', { text:'Send ' + o.name + ' a thank-you' }),
+    h('p', { class:'lead', text:'Not \u201cyou\u2019re great\u201d, but what exactly you noticed. It shows up in the shared jar.' }),
+    h('div', { class:'chips', style:'margin-bottom:10px' },
+      STARTERS.map(s => h('button', { class:'chip', onclick: () => {
+        d.apprText = s; renderMain();
+        const el = document.getElementById('appr-text'); if (el){ el.focus(); el.setSelectionRange(s.length, s.length); }
+      } }, s.trim() + '\u2026'))),
+    h('label', { class:'label', for:'appr-text', text:'Your thank-you' }),
+    h('textarea', { class:'field', id:'appr-text', maxlength:'600', value:d.apprText, oninput: e => { d.apprText = e.target.value; } }),
+    h('div', { class:'row', style:'margin-top:12px' }, h('button', { class:'btn', onclick: () => sendAppreciation(p) }, 'Send thank-you'))
+  );
+}
+function dueFrom(p, k){
+  const tz = tzOf(p), now = Date.now();
+  if (k === 'hour') return new Date(now + 3600e3);
+  if (k === 'tonight'){ const t = zonedAt(tz, 0, 22, 0); return t.getTime() > now ? t : new Date(now + 3600e3); }
+  if (k === 'tomorrow') return zonedAt(tz, 1, 21, 0);
+  if (k === 'week') return new Date(now + 7*864e5);
+  return null;
+}
+async function makePromise(p){
+  const d = state.d[p], t = (d.promText || '').trim();
+  if (t.length < 3){ toast('Write what you\u2019re promising first.'); return; }
+  const due = dueFrom(p, d.promBy);
+  const ok = await write(() => store.addDoc('promises', { by:p, text:t.slice(0, 200), due: due ? due.toISOString() : null, status:'open', at:nowISO() }), 'Promise made. Now keep it.');
+  if (ok){ d.promText = ''; d.promBy = ''; renderMain(); }
+}
+async function closePromise(id, status){
+  await write(() => store.updateDoc('promises/' + id, { status, closedAt:nowISO(), closedBy:lsGet('os-me') || null }),
+    status === 'kept' ? 'Marked as kept.' : 'Marked. Maybe try again soon.');
+}
+function promiseCompose(p){
+  const d = state.d[p];
+  const mine = state.promises.filter(x => x.by === p && x.status === 'open');
+  return h('section', { class:'block' },
+    h('h2', { text:'Make a small promise' }),
+    h('p', { class:'lead', text:'Trust comes back through small promises kept on time. \u201cI\u2019ll call at 9\u201d counts.' }),
+    h('label', { class:'label', for:'prom-text', text:'I promise to\u2026' }),
+    h('input', { class:'field', id:'prom-text', maxlength:'200', placeholder: p === 'sudipt' ? 'call you at 9 after my lab' : 'text you when I\u2019m home', value:d.promText, oninput: e => { d.promText = e.target.value; } }),
+    h('div', { style:'margin-top:10px' },
+      h('label', { class:'label', for:'prom-by', text:'By when' }),
+      h('select', { class:'field', id:'prom-by', onchange: e => { d.promBy = e.target.value; } },
+        [['','No deadline'],['hour','Within the hour'],['tonight','Tonight'],['tomorrow','Tomorrow evening'],['week','This week']]
+          .map(([v, l]) => { const o = h('option', { value:v }, l); if (d.promBy === v) o.selected = true; return o; }))),
+    h('div', { class:'row', style:'margin-top:12px' }, h('button', { class:'btn', onclick: () => makePromise(p) }, 'Make promise')),
+    mine.length ? h('div', { style:'margin-top:16px' },
+      h('h3', { text:'Your open promises' }),
+      h('ul', { class:'feed' }, mine.map(x => h('li', {},
+        h('div', { class:'meta', text: x.due ? 'By ' + dualFor(x.due, p, p) : 'No deadline' }),
+        h('p', { text:x.text }),
+        h('div', { class:'row', style:'margin-top:8px' },
+          x.due && Date.parse(x.due) < Date.now() ? h('span', { class:'tag warn', text:'Past due' }) : null,
+          h('button', { class:'btn small', onclick: () => closePromise(x.id, 'kept') }, 'Kept'),
+          h('button', { class:'btn secondary small', onclick: () => closePromise(x.id, 'missed') }, 'Not this time')))))) : null
+  );
+}
+
+/* ---------- private notes ---------- */
+async function addNote(p){
+  const d = state.d[p], t = (d.noteText || '').trim();
+  if (!t){ toast('Write something first.'); return; }
+  const items = [{ id:Date.now().toString(36), text:t.slice(0, 4000), at:nowISO() }].concat(state.notes[p] || []);
+  if (await saveNotes(p, items, 'Saved privately.')){ d.noteText = ''; renderMain(); }
+}
+async function deleteNote(p, id){
+  const items = (state.notes[p] || []).filter(n => n.id !== id);
+  if (await saveNotes(p, items, 'Note deleted.')) renderMain();
+}
+function notesBlock(p){
+  const d = state.d[p], items = state.notes[p] || [];
+  return h('section', { class:'block' },
+    h('h2', { text:'My private notes' }),
+    h('p', { class:'lead', text:'Only you can read these; they\u2019re locked with your PIN. Upset or anxious? Write the long message here first. Read it again in an hour, then decide: send it, say it on a call, or let it go.' }),
+    h('label', { class:'label', for:'note-text', text:'New note' }),
+    h('textarea', { class:'field', id:'note-text', maxlength:'4000', value:d.noteText, oninput: e => { d.noteText = e.target.value; } }),
+    h('div', { class:'row', style:'margin-top:12px' }, h('button', { class:'btn', onclick: () => addNote(p) }, 'Save privately')),
+    items.length ? h('ul', { class:'feed boxed', style:'margin-top:14px' }, items.map(n => h('li', {},
+      h('div', { class:'meta', text:ago(n.at) }),
+      h('div', { class:'note-item' },
+        h('p', { text:n.text }),
+        h('button', { class:'linkish small', 'aria-label':'Delete note', onclick: () => deleteNote(p, n.id) }, 'Delete'))))) : null
+  );
+}
+function pinChangeBlock(p){
+  const d = state.d[p];
+  return h('section', { class:'block' },
+    d.showPinChange
+      ? h('div', { class:'stack' },
+          h('h3', { text:'Change PIN' }),
+          h('div', {}, h('label', { class:'label', for:'np1', text:'New PIN' }),
+            h('input', { class:'field pin-input', id:'np1', type:'password', inputmode:'numeric', autocomplete:'off', maxlength:'8', value:d.newPin,
+              oninput: e => { d.newPin = e.target.value.replace(/\D/g,''); e.target.value = d.newPin; } })),
+          h('div', {}, h('label', { class:'label', for:'np2', text:'Type it again' }),
+            h('input', { class:'field pin-input', id:'np2', type:'password', inputmode:'numeric', autocomplete:'off', maxlength:'8', value:d.newPin2,
+              oninput: e => { d.newPin2 = e.target.value.replace(/\D/g,''); e.target.value = d.newPin2; } })),
+          h('div', { class:'row' },
+            h('button', { class:'btn', onclick: () => changePin(p) }, 'Save new PIN'),
+            h('button', { class:'btn secondary', onclick: () => { d.showPinChange = false; d.newPin = ''; d.newPin2 = ''; renderMain(); } }, 'Cancel')))
+      : h('button', { class:'linkish small', onclick: () => { d.showPinChange = true; renderMain(); } }, 'Change my PIN')
+  );
+}
+function subHeader(){
+  return h('div', { class:'sub-head' }, h('button', { class:'back', onclick: () => { state.sub = null; renderMain(); toTop(); } }, '\u2039 Back'));
+}
+function spaceView(p){
+  const sub = state.sub;
+  if (sub){
+    let body;
+    if (sub === 'checkin') body = [checkinBlock(p), partnerBlock(p)];
+    else if (sub === 'pause') body = h('div', { style:'margin-top:8px' }, pauseBlock(p));
+    else if (sub === 'thanks') body = thanksCompose(p);
+    else if (sub === 'promise') body = promiseCompose(p);
+    else if (sub === 'requests') body = requestsBlock(p);
+    else if (sub === 'focus') body = focusView(p);
+    else if (sub === 'notes') body = notesBlock(p);
+    else if (sub === 'settings') body = [notifBlock(p), pinChangeBlock(p)];
+    return h('div', {}, subHeader(), body);
+  }
+  const o = other(p), O = PEOPLE[o], z = state.pause;
+  const banner = spaceBanner(p), idea = todaysIdea(p), good = goodNews(p), mc = latestCheckin(p);
+  const myOpen = state.promises.filter(x => x.by === p && x.status === 'open').length;
+  const incoming = state.requests.filter(r => r.to === p && r.status === 'open').length;
+  const mine = normFocus(state.focus[p]);
+  const go = k => () => { state.sub = k; renderMain(); toTop(); };
+  const pausing = pauseIsLive() && z.by === p;
+  const tile = (k, title, sub, cls) => h('button', { class:'tile' + (cls ? ' ' + cls : ''), onclick: go(k) }, h('span', { class:'tile-title', text:title }), h('span', { class:'tile-sub', text:sub }));
+  const row = (k, title, sub, badge) => h('button', { class:'list-row', onclick: go(k) },
+    h('span', { class:'row-main' }, h('span', { text:title }), sub ? h('span', { class:'sub', text:sub }) : null),
+    h('span', { class:'row-end' }, badge ? h('span', { class:'badge', text:String(badge) }) : null, h('span', { class:'chev', 'aria-hidden':'true', text:'\u203a' })));
+  return h('div', { class:'stack-lg' },
+    h('div', { class:'space-head' },
+      h('h2', { text:'Hi ' + PEOPLE[p].name }),
+      h('button', { class:'btn secondary small', onclick: lockAll }, 'Lock')),
+    banner ? h('div', { class:'banner' }, h('span', { text:banner.text }), banner.act ? h('button', { class:'btn small', onclick: go(banner.sub) }, banner.act) : null) : null,
+    idea ? h('div', { class:'idea' },
+      h('div', { class:'idea-label', text:'Today\u2019s idea' }),
+      h('p', { class:'idea-text', text:idea.text }),
+      h('div', { class:'idea-foot' },
+        h('span', { class:'idea-from', text:idea.from }),
+        h('button', { class:'linkish small', onclick: () => { state.ideaShift++; renderMain(); } }, 'Another idea'))) : null,
+    good ? h('p', { class:'good-line', text:good }) : null,
+    h('div', { class:'tiles' },
+      tile('checkin', 'Check in', mc ? energyLabel(mc.energy) : 'Not yet today', mc ? '' : 'soft'),
+      tile('pause', pausing ? 'Breather on' : 'Take a breather', pausing ? 'Until ' + clock(new Date(z.until), tzOf(p)) : 'With a time you\u2019ll be back', pausing ? 'warm' : ''),
+      tile('thanks', 'Thank-you', 'For ' + O.name),
+      tile('promise', 'Promise', myOpen ? myOpen + ' open' : 'Make a small one')),
+    h('div', { class:'list' },
+      row('requests', 'Requests', incoming ? O.name + ' asked for something' : 'Ask for something small', incoming),
+      row('focus', 'What I\u2019m working on', mine.length ? mine.map(k => patternById(k) ? patternById(k).title : '').filter(Boolean).join(', ') : 'Choose up to 3'),
+      row('notes', 'Private notes', (state.notes[p] || []).length ? (state.notes[p].length + ' saved') : 'Only you can read these'),
+      row('settings', 'Notifications and PIN', null))
+  );
+}
+/* ---------- shared tabs ---------- */
+function openCalendarOn(ds){
+  const c = calState(), p = ymdParts(ds);
+  c.sel = ds; c.y = p.y; c.m = p.m; c.adding = false; c.editing = null; c.confirmDel = null;
+  state.tab = 'cal'; renderAll(); toTop();
+}
+function card(title, ...kids){ return h('section', { class:'card' }, title ? h('h3', { class:'card-title', text:title }) : null, kids); }
+function usView(){
+  const me = lsGet('os-me'), z = state.pause;
+  const spaces = (me && PEOPLE[me] && !state.homeBoth)
+    ? h('div', { class:'home-space' },
+        h('button', { class:'btn big', onclick: () => openPersonSpace(me) }, 'Open my space'),
+        h('button', { class:'linkish small', onclick: () => { state.homeBoth = true; renderMain(); } }, 'Not ' + PEOPLE[me].name + '?'))
+    : h('div', { class:'spaces' }, ['sudipt','nayana'].map(p => h('button', { class:'space-card', onclick: () => openPersonSpace(p) },
+        h('span', { class:'space-name', text:PEOPLE[p].name }),
+        h('span', { class:'space-sub', text: !state.pinsLoaded[p] ? '\u2026' : (state.pins[p] ? 'Open with PIN' : 'Set up a PIN') }))));
+  const todayRow = p => { const c = latestCheckin(p); return h('div', { class:'t-row' },
+    h('div', { class:'t-top' }, h('span', { class:'t-name', text:PEOPLE[p].name }), h('span', { class:'t-mood', text: c ? energyLabel(c.energy) : 'No check-in yet' })),
+    c && needOf(c.need) ? h('div', { class:'t-need', text:'Would like ' + needOf(c.need).phrase }) : null,
+    c && c.note ? h('p', { class:'bubble from-' + p, text:c.note }) : null); };
+  const up = upcoming(3, 62), last = state.apps[0];
+  return h('div', { class:'stack-lg' },
+    pauseIsLive() ? h('div', { class:'banner' }, h('span', { text: Date.now() > Date.parse(z.until) ? PEOPLE[z.by].name + '\u2019s pause time is up.' : PEOPLE[z.by].name + ' is taking a breather until ' + dualFor(z.until, z.by) + '.' })) : null,
+    card('Today', ['sudipt','nayana'].map(todayRow)),
+    card('Coming up', up.length ? up.map(({ o, ds }) => h('button', { class:'u-row', onclick: () => openCalendarOn(ds) },
+        h('span', { class:'u-when', text:countdown(daysUntil(ds)) }),
+        h('span', { class:'u-main' },
+          h('span', { class:'u-title' }, o.anniv ? h('span', { class:'cal-heart', 'aria-hidden':'true', text:'\u2665 ' }) : whoDot(o), o.title),
+          o.anniv ? null : h('span', { class:'u-sub', text:whoLine(o, ds, true) })),
+        h('span', { class:'chev', 'aria-hidden':'true', text:'\u203a' })))
+      : h('button', { class:'u-empty', onclick: () => openCalendarOn(localYMD()) }, 'Nothing in the next two months. Add a date \u203a')),
+    last ? card('Latest thank-you', h('button', { class:'jar-one tap from-' + last.from, onclick: () => { state.tab = 'together'; state.together = 'thanks'; renderAll(); toTop(); } },
+      h('div', { class:'meta', text:(PEOPLE[last.from] ? PEOPLE[last.from].name : '') + ' to ' + (PEOPLE[last.to] ? PEOPLE[last.to].name : '') + ', ' + ago(last.at) }),
+      h('p', { class:'appr-text', text:last.text }),
+      h('span', { class:'tap-hint', text:'See all thank-yous \u203a' }))) : null,
+    h('button', { class:'linkish small quiet-link', onclick: () => { state.tab = 'settings'; renderAll(); toTop(); } }, 'Settings')
+  );
+}
+function meView(){
+  return h('div', { class:'stack-lg' },
+    h('div', {}, h('h2', { text:'Whose space?' }), h('p', { class:'lead', text:'Each of you has a private space, opened with your own PIN.' })),
+    h('div', { class:'spaces' }, ['sudipt','nayana'].map(p => h('button', { class:'space-card from-' + p, onclick: () => { state.homeBoth = false; openPersonSpace(p); } },
+      h('span', { class:'space-name', text:PEOPLE[p].name }),
+      h('span', { class:'space-sub', text: !state.pinsLoaded[p] ? '\u2026' : (state.pins[p] ? 'Open with PIN' : 'Set up a PIN') })))));
+}
+function settingsView(){
+  return h('div', { class:'stack-lg' },
+    h('h2', { text:'Settings' }),
+    card(null, h('div', { class:'set-row' }, h('span', { text:'Nayana is in' }),
+      h('span', { class:'seg', role:'group', 'aria-label':'Nayana\u2019s city' },
+        ['kochi','milan'].map(c => h('button', { 'aria-pressed': cityOf('nayana') === c ? 'true' : 'false', onclick: () => setNayanaCity(c) }, CITY_NAME[c]))))),
+    card(null,
+      h('div', { class:'set-row' }, h('span', { text:'Shared code' }),
+        h('button', { class:'linkish small', onclick: () => { state.showCode = !state.showCode; renderMain(); } }, state.showCode ? 'Hide' : 'Show')),
+      state.showCode ? h('p', { class:'code', text:state.code }) : null),
+    h('button', { class:'linkish small quiet-link', onclick: () => {
+      if (!confirm('Remove this space from this phone? Nothing is deleted; you can rejoin with the code.')) return;
+      lsDel('os-code'); unsubs.forEach(u => { try{ u(); }catch(e){} }); unsubs = [];
+      state.phase = 'setup'; state.setup = { stage:'choose', newCode:'', joinCode:'', err:'' }; state.unlocked = {}; state.view = null; state.tab = 'us'; renderAll();
+    } }, 'Remove this space from this phone')
+  );
+}
+function togetherView(){
+  const seg = state.together, me = lsGet('os-me');
+  const week = Date.now() - 7*864e5, recent = state.apps.filter(a => Date.parse(a.at) > week);
+  const now = Date.now(), mk = dateKey(ZONES.milan).slice(0, 7);
+  const open = state.promises.filter(p => p.status === 'open').sort((a,b) => (Date.parse(a.due)||Infinity) - (Date.parse(b.due)||Infinity));
+  const closed = state.promises.filter(p => p.status !== 'open').slice(0, 10);
+  const keptAll = state.promises.filter(p => p.status === 'kept' && p.closedAt && dateKey(ZONES.milan, new Date(p.closedAt)).slice(0,7) === mk).length;
+  const writeBtn = (sub, label) => (me && PEOPLE[me]) ? h('button', { class:'btn secondary small', onclick: () => openPersonSpace(me, sub) }, label) : null;
+  return h('div', { class:'stack-lg' },
+    h('div', { class:'seg wide', role:'tablist' },
+      [['thanks','Thank-yous'], ['promises','Promises']].map(([k, l]) => h('button', { role:'tab', 'aria-pressed': seg === k ? 'true' : 'false', onclick: () => { state.together = k; renderMain(); } }, l))),
+    seg === 'thanks' ? h('div', {},
+      h('div', { class:'row', style:'justify-content:space-between' },
+        h('p', { class:'muted small', text: recent.length ? recent.length + ' between you this week' : 'The jar' }), writeBtn('thanks', 'Write one')),
+      state.apps.length ? h('ul', { class:'feed jar' }, state.apps.map(a => h('li', { class:'from-' + a.from },
+          h('div', { class:'meta', text:(PEOPLE[a.from] ? PEOPLE[a.from].name : 'Someone') + ' to ' + (PEOPLE[a.to] ? PEOPLE[a.to].name : '') + ', ' + ago(a.at) }),
+          h('p', { class:'appr-text', text:a.text }))))
+        : h('p', { class:'empty', text:'The jar is empty. The first thank-you goes here.' }))
+    : h('div', {},
+      h('div', { class:'row', style:'justify-content:space-between' },
+        h('p', { class:'muted small', text: keptAll ? keptAll + ' kept together this month' : 'Small promises, kept' }), writeBtn('promise', 'Make one')),
+      open.length ? h('ul', { class:'feed boxed', style:'margin-top:12px' }, open.map(p => h('li', {},
+        h('div', { class:'meta', text:PEOPLE[p.by].name + (p.due ? ', by ' + dualFor(p.due, p.by) : '') }),
+        h('p', { style:'font-size:16px', text:p.text }),
+        h('div', { class:'row', style:'margin-top:10px' },
+          h('button', { class:'btn small', onclick: () => closePromise(p.id, 'kept') }, 'Kept'),
+          h('button', { class:'btn secondary small', onclick: () => closePromise(p.id, 'missed') }, 'Not this time')))))
+        : h('p', { class:'empty', text:'No open promises right now.' }),
+      closed.length ? h('details', { class:'pattern', style:'margin-top:16px' }, h('summary', { text:'Recently closed' }),
+        h('ul', { class:'plain' }, closed.map(p => h('li', {}, h('span', { class:'tag' + (p.status === 'kept' ? ' good' : ''), text: p.status === 'kept' ? 'Kept' : 'Not this time' }), ' ' + p.text)))) : null)
+  );
+}
+/* ---------- calendar ---------- */
+const DOW = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+function localYMD(d){ d = d || new Date(); return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate()); }
+function ymdParts(ds){ const a = ds.split('-').map(Number); return { y:a[0], m:a[1], d:a[2] }; }
+function addDays(ds, n){ const p = ymdParts(ds); return localYMD(new Date(p.y, p.m-1, p.d+n)); }
+function prettyDate(ds, opts){ const p = ymdParts(ds); return new Intl.DateTimeFormat('en-GB', opts || { weekday:'long', day:'numeric', month:'long' }).format(new Date(p.y, p.m-1, p.d)); }
+function daysUntil(ds){ const a = ymdParts(localYMD()), b = ymdParts(ds); return Math.round((Date.UTC(b.y,b.m-1,b.d) - Date.UTC(a.y,a.m-1,a.d)) / 864e5); }
+function countdown(n){ return n === 0 ? 'Today' : n === 1 ? 'Tomorrow' : 'In ' + n + ' days'; }
+function calState(){
+  if (!state.cal){ const t = localYMD(), p = ymdParts(t); state.cal = { y:p.y, m:p.m, sel:t, f:newEventDraft(), confirmDel:null }; }
+  return state.cal;
+}
+function occurrencesOn(ds){
+  const out = [];
+  if (ds.slice(8) === '03') out.push({ anniv:true, title:'Our anniversary' });
+  for (const e of state.events){
+    if (!e.date) continue;
+    if (e.date === ds || (e.repeat === 'yearly' && e.date.slice(5) === ds.slice(5) && ds > e.date)) out.push(e);
+  }
+  out.sort((a, b) => a.anniv ? -1 : b.anniv ? 1 : (a.time || '99').localeCompare(b.time || '99'));
+  return out;
+}
+function upcoming(n, days){
+  const out = []; let ds = localYMD();
+  for (let i = 0; i < days && out.length < n; i++){ for (const o of occurrencesOn(ds)) out.push({ o, ds }); ds = addDays(ds, 1); }
+  return out.slice(0, n);
+}
+function eventTimeText(e, ds){
+  if (!e.time) return 'All day';
+  const city = e.city === 'kochi' ? 'kochi' : 'milan', tz = ZONES[city];
+  const p = ymdParts(ds), t = e.time.split(':').map(Number);
+  const guess = Date.UTC(p.y, p.m-1, p.d, t[0], t[1]);
+  const at = new Date(guess - tzOffsetMin(tz, new Date(guess)) * 60000);
+  if (sameCity()) return clock(at, ZONES[cityOf('sudipt')]);
+  const oc = city === 'milan' ? 'kochi' : 'milan';
+  return clock(at, tz) + ' ' + CITY_NAME[city] + ' (' + clock(at, ZONES[oc]) + ' ' + CITY_NAME[oc] + ')';
+}
+function forLabel(f){ return f === 'sudipt' ? 'Sudipt' : f === 'nayana' ? 'Nayana' : 'Both of us'; }
+function whoLine(e, ds, withTime){
+  const bits = [];
+  if (withTime && e.time) bits.push(eventTimeText(e, ds));
+  bits.push(e.for === 'both' || !e.for ? 'for both of you' : 'for ' + forLabel(e.for));
+  if (PEOPLE[e.by]) bits.push('added by ' + PEOPLE[e.by].name);
+  if (PEOPLE[e.editedBy] && e.editedBy !== e.by) bits.push('edited by ' + PEOPLE[e.editedBy].name);
+  const t = bits.join(', ');
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
+function whoDot(e){ return h('span', { class:'who-dot for-' + (e.for === 'sudipt' || e.for === 'nayana' ? e.for : 'both'), 'aria-hidden':'true' }); }
+async function addEvent(){
+  const c = calState(), f = c.f, title = f.title.trim();
+  if (!title){ toast('Give the event a name.'); return; }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(c.sel)){ toast('Pick a date first.'); return; }
+  const fields = { title:title.slice(0, 120), date:c.sel, time:f.time || '', city:f.city, for:f.for, repeat: f.yearly ? 'yearly' : 'none', note:f.note.trim().slice(0, 300) };
+  const ok = c.editing
+    ? await write(() => store.updateDoc('events/' + c.editing, Object.assign(fields, { editedBy:lsGet('os-me') || null, editedAt:nowISO() })), 'Saved.')
+    : await write(() => store.addDoc('events', Object.assign(fields, { by:lsGet('os-me') || null, at:nowISO() })), 'Added to your calendar.');
+  if (ok){ c.f = newEventDraft(); c.adding = false; c.editing = null; renderMain(); }
+}
+async function deleteEvent(id){
+  const c = calState();
+  if (c.confirmDel !== id){ c.confirmDel = id; renderMain(); return; }
+  c.confirmDel = null;
+  await write(() => store.deleteDoc('events/' + id), 'Event deleted.');
+}
+function selectDay(ds){ const c = calState(), p = ymdParts(ds); c.sel = ds; c.y = p.y; c.m = p.m; c.confirmDel = null; renderMain(); }
+function shiftMonth(n){
+  const c = calState(); const d = new Date(c.y, c.m - 1 + n, 1);
+  c.y = d.getFullYear(); c.m = d.getMonth() + 1;
+  const keep = ymdParts(c.sel);
+  if (keep.y !== c.y || keep.m !== c.m) c.sel = c.y + '-' + pad(c.m) + '-01';
+  c.confirmDel = null; renderMain();
+}
+function calGrid(){
+  const c = calState(), today = localYMD();
+  const first = new Date(c.y, c.m - 1, 1), lead = (first.getDay() + 6) % 7, days = new Date(c.y, c.m, 0).getDate();
+  const cells = [];
+  for (let i = 0; i < lead; i++) cells.push(h('div', { class:'cal-day out', 'aria-hidden':'true' }));
+  for (let d = 1; d <= days; d++){
+    const ds = c.y + '-' + pad(c.m) + '-' + pad(d), occ = occurrencesOn(ds);
+    const evs = occ.filter(o => !o.anniv), anniv = occ.some(o => o.anniv);
+    const label = prettyDate(ds) + (anniv ? ', our anniversary' : '') + (evs.length ? ', ' + evs.length + ' event' + (evs.length > 1 ? 's' : '') : '');
+    cells.push(h('button', { class:'cal-day' + (ds === today ? ' today' : '') + (anniv ? ' anniv' : ''), 'aria-pressed': ds === c.sel ? 'true' : 'false', 'aria-label':label, onclick: () => selectDay(ds) },
+      h('span', { class:'cal-num', text:String(d) }),
+      h('span', { class:'cal-marks', 'aria-hidden':'true' },
+        anniv ? h('span', { class:'cal-heart', text:'\u2665' }) : null,
+        evs.slice(0, 3).map(() => h('span', { class:'cal-dot' })))));
+  }
+  return h('div', {},
+    h('div', { class:'cal-head' },
+      h('h2', { text: new Intl.DateTimeFormat('en-GB', { month:'long', year:'numeric' }).format(new Date(c.y, c.m - 1, 1)) }),
+      h('div', { class:'cal-nav' },
+        h('button', { class:'btn secondary small', 'aria-label':'Previous month', onclick: () => shiftMonth(-1) }, '\u2039'),
+        h('button', { class:'btn secondary small', onclick: () => selectDay(localYMD()) }, 'Today'),
+        h('button', { class:'btn secondary small', 'aria-label':'Next month', onclick: () => shiftMonth(1) }, '\u203a'))),
+    h('div', { class:'cal-grid' }, DOW.map(d => h('div', { class:'cal-dow', text:d })), cells)
+  );
+}
+function eventItem(o, ds, withDelete){
+  const c = calState();
+  if (o.anniv) return h('li', { class:'ev anniv-item' },
+    h('div', { class:'ev-body' },
+      h('p', { class:'ev-title' }, h('span', { class:'cal-heart big', 'aria-hidden':'true', text:'\u2665 ' }), 'Our anniversary'),
+      h('p', { class:'lock', text:'Every 3rd of the month. Locked, so it can\u2019t be moved or deleted.' })));
+  return h('li', { class:'ev' },
+    h('div', { class:'ev-body' },
+      h('p', { class:'ev-title' }, whoDot(o), o.title),
+      h('div', { class:'meta', text: (o.time ? eventTimeText(o, ds) : 'All day') + (o.repeat === 'yearly' ? ', every year' : '') }),
+      h('div', { class:'meta', text: whoLine(o, ds, false) }),
+      o.note ? h('p', { class:'small', style:'margin-top:4px', text:o.note }) : null),
+    withDelete ? h('div', { class:'ev-actions' },
+      h('button', { class:'linkish small', onclick: () => startEdit(o) }, 'Edit'),
+      h('button', { class:'linkish small', onclick: () => deleteEvent(o.id) }, c.confirmDel === o.id ? 'Tap again to delete' : 'Delete')) : null);
+}
+function startEdit(e){
+  const c = calState(), p = ymdParts(e.date);
+  c.editing = e.id; c.adding = true; c.confirmDel = null;
+  c.sel = e.date; c.y = p.y; c.m = p.m;
+  c.f = { title:e.title || '', time:e.time || '', city:e.city === 'kochi' ? 'kochi' : 'milan', for:e.for || 'both', yearly:e.repeat === 'yearly', note:e.note || '' };
+  renderMain();
+  requestAnimationFrame(() => { const el = document.getElementById('ev-form'); if (el) el.scrollIntoView({ behavior:'smooth', block:'start' }); });
+}
+function cancelEdit(){ const c = calState(); c.adding = false; c.editing = null; c.f = newEventDraft(); renderMain(); }
+function calendarView(){
+  const c = calState(), f = c.f, occ = occurrencesOn(c.sel), n = daysUntil(c.sel);
+  return h('div', { class:'stack-lg' },
+    h('section', {}, calGrid()),
+    card(prettyDate(c.sel) + (n === 0 ? ', today' : n === 1 ? ', tomorrow' : ''),
+      occ.length ? h('ul', { class:'feed' }, occ.map(o => eventItem(o, c.sel, true))) : h('p', { class:'muted small', text:'Nothing planned.' }),
+      c.adding ? null : h('button', { class:'btn secondary small', style:'margin-top:12px', onclick: () => { c.adding = true; c.editing = null; c.f = newEventDraft(); renderMain(); } }, '+ Add a date')),
+    !c.adding ? null : h('section', { class:'card', id:'ev-form' },
+      h('div', { class:'row', style:'justify-content:space-between' }, h('h3', { class:'card-title', text: c.editing ? 'Edit date' : 'Add a date' }), h('button', { class:'linkish small', onclick: cancelEdit }, 'Cancel')),
+      h('div', { class:'stack', style:'margin-top:10px' },
+        h('div', {}, h('label', { class:'label', for:'ev-title', text:'What' }),
+          h('input', { class:'field', id:'ev-title', maxlength:'120', placeholder:'Dinner date, flight, exam\u2026', value:f.title, oninput: e => { f.title = e.target.value; } })),
+        h('div', { class:'row', style:'align-items:flex-end' },
+          h('div', { style:'flex:1 1 150px' }, h('label', { class:'label', for:'ev-date', text:'Date' }),
+            h('input', { class:'field', id:'ev-date', type:'date', value:c.sel, onchange: e => { if (e.target.value) selectDay(e.target.value); } })),
+          h('div', { style:'flex:1 1 120px' }, h('label', { class:'label', for:'ev-time', text:'Time (optional)' }),
+            h('input', { class:'field', id:'ev-time', type:'time', value:f.time, oninput: e => { f.time = e.target.value; }, onchange: () => renderMain() }))),
+        (f.time && !sameCity()) ? h('div', {},
+          h('span', { class:'label', id:'lbl-evcity', text:'That time is in' }),
+          h('div', { class:'chips', role:'group', 'aria-labelledby':'lbl-evcity' },
+            ['milan','kochi'].map(k => h('button', { class:'chip', 'aria-pressed': f.city === k ? 'true' : 'false', onclick: () => { f.city = k; renderMain(); } }, CITY_NAME[k] + ' time')))) : null,
+        h('div', {},
+          h('span', { class:'label', id:'lbl-evfor', text:'For' }),
+          h('div', { class:'chips', role:'group', 'aria-labelledby':'lbl-evfor' },
+            ['both','sudipt','nayana'].map(k => h('button', { class:'chip', 'aria-pressed': f.for === k ? 'true' : 'false', onclick: () => { f.for = k; renderMain(); } }, forLabel(k))))),
+        h('div', { class:'chips' },
+          h('button', { class:'chip', 'aria-pressed': f.yearly ? 'true' : 'false', onclick: () => { f.yearly = !f.yearly; renderMain(); } }, 'Repeats every year')),
+        h('div', {}, h('label', { class:'label', for:'ev-note', text:'Note (optional)' }),
+          h('input', { class:'field', id:'ev-note', maxlength:'300', value:f.note, oninput: e => { f.note = e.target.value; } })),
+        h('div', { class:'row' }, h('button', { class:'btn', onclick: addEvent }, c.editing ? 'Save changes' : 'Add to calendar'))))
+  );
+}
+function comingUpBlock(){
+  const list = upcoming(4, 62);
+  return h('section', { class:'block' },
+    h('h2', { text:'Coming up' }),
+    list.length ? h('ul', { class:'feed' }, list.map(({ o, ds }) => h('li', { class:'ev' },
+      h('div', { class:'ev-when', text: countdown(daysUntil(ds)) }),
+      h('div', { class:'ev-body' },
+        h('p', { class:'ev-title' }, o.anniv ? h('span', { class:'cal-heart big', 'aria-hidden':'true', text:'\u2665 ' }) : null, o.title),
+        h('div', { class:'meta', text: prettyDate(ds, { weekday:'short', day:'numeric', month:'short' }) + (o.anniv ? '' : ', ' + eventTimeText(o, ds) + ', ' + forLabel(o.for)) })))))
+      : h('p', { class:'empty', text:'Nothing in the next two months.' }),
+    h('button', { class:'linkish small', style:'margin-top:8px', onclick: () => { state.tab = 'cal'; renderAll(); toTop(); } }, 'Open calendar')
+  );
+}
+
+/* ---------- talk ---------- */
+async function saveTalk(){
+  const t = state.talk;
+  if (!t.topic.trim()){ toast('Add what the talk was about.'); return; }
+  const ok = await write(() => store.addDoc('talks', {
+    topic:t.topic.trim().slice(0,160),
+    understood:{ sudipt:t.us.trim().slice(0,400), nayana:t.un.trim().slice(0,400) },
+    will:{ sudipt:t.ws.trim().slice(0,400), nayana:t.wn.trim().slice(0,400) },
+    at:nowISO()
+  }), 'Saved to your log. Well done, both of you.');
+  if (ok){ state.talk = { topic:'', us:'', un:'', ws:'', wn:'' }; state.talkStep = 0; state.speaker = null; renderMain(); }
+}
+function talkField(id, key, label, multi){
+  const props = { class:'field', id, value:state.talk[key], oninput: e => { state.talk[key] = e.target.value; } };
+  return h('div', {}, h('label', { class:'label', for:id, text:label }), multi ? h('textarea', Object.assign({ maxlength:'400' }, props)) : h('input', Object.assign({ maxlength:'160' }, props)));
+}
+function talkSteps(){
+  const sp = state.speaker, li = sp ? other(sp) : null;
+  const S = sp ? PEOPLE[sp].name : 'The speaker', L = li ? PEOPLE[li].name : 'The listener';
+  return [
+    { title:'Before you start', body:[
+      h('ul', {},
+        h('li', { text:'On a call or in person, never over text.' }),
+        h('li', { text:'One topic at a time.' }),
+        h('li', { text:'Pick a time when you\u2019re both not too tired.' }),
+        h('li', { text:'About 20 minutes for the first round.' })),
+      h('p', { style:'margin-top:14px;font-weight:600', text:'Who\u2019s more upset? They speak first.' }),
+      h('div', { class:'chips', style:'margin-top:8px' },
+        ['sudipt','nayana'].map(p => h('button', { class:'chip', 'aria-pressed': sp === p ? 'true' : 'false', onclick: () => { state.speaker = p; renderMain(); } }, PEOPLE[p].name)))
+    ]},
+    { title:S + ' shares', body:[
+      h('div', { class:'say' }, h('b', { text:S + ': ' }), '\u201cI feel ___ about ___, and what I need is ___.\u201d'),
+      h('p', { text:L + ' just listens for now. Your turn comes next.' })
+    ]},
+    { title:L + ' reflects back', body:[
+      h('div', { class:'say' }, h('b', { text:L + ': ' }), '\u201cSo you felt ___ when ___. Did I get that right?\u201d'),
+      h('div', { class:'say' }, h('b', { text:L + ': ' }), '\u201cIs there more?\u201d'),
+      h('p', { text:'Keep going until ' + S + ' says \u201cyes, that\u2019s it.\u201d' })
+    ]},
+    { title:'Ask before helping', body:[
+      h('div', { class:'say' }, h('b', { text:L + ': ' }), '\u201cDo you want ideas, or do you just want me to listen?\u201d'),
+      h('p', { text:'Then do what ' + S + ' asks for.' })
+    ]},
+    { title:'Switch', body:[
+      h('p', { text:L + ' now shares ' + (li ? PEOPLE[li].his : 'their') + ' side the same way, and ' + S + ' reflects it back.' }),
+      h('p', { class:'muted', style:'margin-top:8px', text:'If it heats up again, either of you can call a pause with a return time.' })
+    ]},
+    { title:'Close it', body:[
+      h('p', { class:'muted', style:'margin-bottom:12px', text:'Each of you says one thing you understood and one thing you\u2019ll do differently.' }),
+      h('div', { class:'stack' },
+        talkField('t-topic', 'topic', 'What was it about?', false),
+        talkField('t-us', 'us', 'What Sudipt understood', true),
+        talkField('t-un', 'un', 'What Nayana understood', true),
+        talkField('t-ws', 'ws', 'What Sudipt will do differently', true),
+        talkField('t-wn', 'wn', 'What Nayana will do differently', true),
+        h('div', { class:'row' }, h('button', { class:'btn', onclick: saveTalk }, 'Save to our log')))
+    ]}
+  ];
+}
+async function addPattern(){
+  const t = state.np.title.trim(), lines = state.np.help.split('\n').map(x => x.trim()).filter(Boolean).slice(0, 6);
+  if (!t){ toast('Write what keeps happening.'); return; }
+  if (!lines.length){ toast('Add at least one idea that could help.'); return; }
+  const ok = await write(() => store.addDoc('patterns', { title:t.slice(0, 90), help:lines.map(x => x.slice(0, 160)), by:lsGet('os-me') || null, at:nowISO() }), 'Added. You can both pick it from your own space.');
+  if (ok){ state.np = { title:'', help:'' }; state.npOpen = false; renderMain(); }
+}
+async function deletePattern(id){
+  if (state.npDel !== id){ state.npDel = id; renderMain(); return; }
+  state.npDel = null; await write(() => store.deleteDoc('patterns/' + id), 'Removed.');
+}
+function patternDetails(pt){
+  return h('details', { class:'pattern' },
+    h('summary', { text:pt.title }),
+    h('div', { class:'pattern-body' },
+      pt.what ? h('p', { class:'what', text:pt.what }) : null,
+      pt.roles.map(r => [h('p', { class:'role', text:r[0] }), h('ul', {}, r[1].map(t => h('li', { text:t })))]),
+      pt.custom ? h('button', { class:'linkish small', style:'margin-bottom:12px', onclick: () => deletePattern(pt.id) }, state.npDel === pt.id ? 'Tap again to remove' : 'Remove') : null));
+}
+function talkView(){
+  const steps = talkSteps(), i = Math.min(state.talkStep, steps.length - 1), st = steps[i];
+  const go = n => { state.talkStep = Math.max(0, Math.min(steps.length - 1, n)); renderMain(); };
+  const talk = state.requests.filter(r => r.status === 'talk');
+  return h('div', { class:'stack-lg' },
+    talk.length ? card('On your Sunday list', h('ul', { class:'feed boxed' }, talk.map(r => h('li', {},
+      h('p', { text:PEOPLE[r.from].name + ' would love it if ' + PEOPLE[r.to].name + ' would ' + requestLine(r) + '.' }),
+      r.note ? h('p', { class:'bubble from-' + r.from, text:r.note }) : null,
+      h('div', { class:'row', style:'margin-top:10px' },
+        h('button', { class:'btn small', onclick: () => respondRequest(r.id, 'accepted') }, PEOPLE[r.to].name + ' will work on it'),
+        h('button', { class:'btn secondary small', onclick: () => respondRequest(r.id, 'closed') }, 'We talked about it')))))) : null,
+    h('section', {},
+      h('h2', { text:'Talk it through' }),
+      h('p', { class:'lead', text:'Open this on your call when something needs sorting.' }),
+      h('div', { class:'step-card' },
+        h('div', { class:'step-count', text:'Step ' + (i + 1) + ' of ' + steps.length }),
+        h('h3', { text:st.title }),
+        h('div', { style:'margin-top:8px' }, st.body),
+        h('div', { class:'row', style:'margin-top:16px;justify-content:space-between' },
+          h('button', { class:'btn secondary small', onclick: () => go(i - 1), disabled: i === 0 }, 'Back'),
+          i < steps.length - 1 ? h('button', { class:'btn small', onclick: () => go(i + 1), disabled: i === 0 && !state.speaker }, 'Next') : null))),
+    h('section', {},
+      h('h2', { text:'When we get stuck' }),
+      h('p', { class:'lead', text:'Disagreements that keep coming back, and changes either of you could try. Pick the ones you\u2019ll work on from your own space.' }),
+      allPatterns().map(patternDetails),
+      h('details', { class:'pattern', open: state.npOpen ? true : null, ontoggle: e => { state.npOpen = e.target.open; } },
+        h('summary', { text:'Add one we keep running into' }),
+        h('div', { class:'pattern-body stack' },
+          h('div', {}, h('label', { class:'label', for:'np-title', text:'What keeps happening' }),
+            h('input', { class:'field', id:'np-title', maxlength:'90', placeholder:'Plans change last minute', value:state.np.title, oninput: e => { state.np.title = e.target.value; } })),
+          h('div', {}, h('label', { class:'label', for:'np-help', text:'What could help (one idea per line)' }),
+            h('textarea', { class:'field', id:'np-help', maxlength:'900', value:state.np.help, oninput: e => { state.np.help = e.target.value; } })),
+          h('div', { style:'margin-bottom:14px' }, h('button', { class:'btn', onclick: addPattern }, 'Add'))))),
+    h('section', {},
+      h('h2', { text:'More' }),
+      h('details', { class:'pattern' },
+        h('summary', { text:'Phrases that help' }),
+        h('div', { class:'pattern-body' }, h('div', { class:'swap-wrap' }, h('table', { class:'swap' },
+          h('thead', {}, h('tr', {}, h('th', { text:'When it\u2019s tempting to say' }), h('th', { text:'Try' }))),
+          h('tbody', {}, SWAPS.map(([a, b]) => h('tr', {}, h('td', { text:a }), h('td', { text:b })))))))),
+      h('details', { class:'pattern' },
+        h('summary', { text:'Sunday check-in, 20 minutes' }),
+        h('div', { class:'pattern-body' }, h('ol', {},
+          h('li', { text:'Three specific appreciations each.' }),
+          h('li', { text:'One thing we handled well together this week.' }),
+          h('li', { text:'One request for next week, as a need, not a complaint.' }),
+          h('li', { text:'Anything left over from a pause.' }),
+          h('li', { text:'Next date: when, and whose turn to plan.' })))),
+      state.talks.length ? h('details', { class:'pattern' },
+        h('summary', { text:'Past talks (' + state.talks.length + ')' }),
+        h('div', { class:'pattern-body' }, h('ul', { class:'feed' }, state.talks.map(t => h('li', {},
+          h('div', { class:'meta', text:ago(t.at) }),
+          h('p', { style:'font-weight:600', text:t.topic }),
+          h('dl', { class:'talk-dl' },
+            (t.understood && t.understood.sudipt) ? [h('dt', { text:'Sudipt understood' }), h('dd', { text:t.understood.sudipt })] : null,
+            (t.understood && t.understood.nayana) ? [h('dt', { text:'Nayana understood' }), h('dd', { text:t.understood.nayana })] : null,
+            (t.will && t.will.sudipt) ? [h('dt', { text:'Sudipt will' }), h('dd', { text:t.will.sudipt })] : null,
+            (t.will && t.will.nayana) ? [h('dt', { text:'Nayana will' }), h('dd', { text:t.will.nayana })] : null)))))) : null)
+  );
+}
+/* ---------- setup ---------- */
+async function enterCode(code){
+  const c = normCode(code);
+  if (c.split('-').length < 3 || c.length < 12){ state.setup.err = 'That code looks too short. Check it and try again.'; renderSetup(); return; }
+  lsSet('os-code', c); await openSpace(c);
+}
+function renderSetup(){
+  const root = document.getElementById('overlay-root'), s = state.setup;
+  if (state.phase !== 'setup'){ root.replaceChildren(); return; }
+  let body;
+  if (s.stage === 'created'){
+    body = [
+      h('h1', { id:'setup-title', text:'Your shared code' }),
+      h('p', { class:'muted', text:'Send this to your partner privately. You\u2019ll each enter it once, and the app remembers it on that phone.' }),
+      h('div', { class:'code', text:s.newCode }),
+      h('button', { class:'btn secondary', onclick: () => copyText(s.newCode, 'Code copied.') }, 'Copy code'),
+      h('button', { class:'btn', onclick: () => enterCode(s.newCode) }, 'Continue')
+    ];
+  } else if (s.stage === 'join'){
+    body = [
+      h('h1', { id:'setup-title', text:'Enter your code' }),
+      h('p', { class:'muted', text:'The code looks like four words and a number.' }),
+      h('input', { class:'field', id:'join-code', style:'margin-top:14px', autocomplete:'off', autocapitalize:'off', spellcheck:'false', placeholder:'word-word-word-word-1234', value:s.joinCode,
+        oninput: e => { s.joinCode = e.target.value; }, onkeydown: e => { if (e.key === 'Enter') enterCode(s.joinCode); } }),
+      h('p', { class:'err', text:s.err }),
+      h('button', { class:'btn', onclick: () => enterCode(s.joinCode) }, 'Join'),
+      h('button', { class:'btn secondary', onclick: () => { s.stage = 'choose'; s.err = ''; renderSetup(); } }, 'Back')
+    ];
+  } else {
+    body = [
+      h('h1', { id:'setup-title', text:'Our Space' }),
+      h('p', { class:'muted', text:'A shared place for pauses, check-ins, thank-yous and promises. Start a new space, or join with the code you were sent.' }),
+      h('button', { class:'btn', onclick: () => { s.newCode = genCode(); s.stage = 'created'; renderSetup(); } }, 'Start a new space'),
+      h('button', { class:'btn alt', onclick: () => { s.stage = 'join'; renderSetup(); } }, 'I have a code')
+    ];
+  }
+  root.replaceChildren(h('div', { class:'overlay', role:'dialog', 'aria-modal':'true', 'aria-labelledby':'setup-title' }, h('div', { class:'picker' }, body)));
+  const f = root.querySelector('#join-code') || root.querySelector('button'); if (f) f.focus();
+}
+
+/* ---------- chrome ---------- */
+const ICONS = {
+  us:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/></svg>',
+  cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>',
+  me:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="12" r="5.5"/><circle cx="14.5" cy="12" r="5.5"/></svg>',
+  together:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>',
+  talk:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a7.5 7.5 0 0 1-11.2 6.5L4 20l1.5-4.6A7.5 7.5 0 1 1 20 12z"/></svg>'
+};
+const TABS = [['us','Home'], ['cal','Calendar'], ['me','My space'], ['together','Together'], ['talk','Talk']];
+function goTab(k){
+  if (k === 'me'){
+    const me = lsGet('os-me');
+    if (state.view) return;
+    if (me && PEOPLE[me] && !state.homeBoth){ openPersonSpace(me); return; }
+    state.tab = 'me'; renderAll(); toTop(); return;
+  }
+  if (state.view){ state.view = null; state.sub = null; lockAll(); }
+  state.tab = k; renderAll(); toTop();
+}
+function renderTabs(){
+  const nav = document.getElementById('tabs');
+  nav.className = 'nav';
+  if (state.phase !== 'app'){ nav.replaceChildren(); nav.hidden = true; return; }
+  nav.hidden = false;
+  const active = state.view ? 'me' : state.tab;
+  nav.replaceChildren(h('div', { class:'nav-inner' }, TABS.map(([k, label]) => {
+    const b = h('button', { id:'tab-' + k, class: k === 'me' ? 'nav-me' : null, 'aria-current': active === k ? 'page' : null, onclick: () => goTab(k) });
+    const ic = h('span', { class:'nav-ic', 'aria-hidden':'true' }); ic.innerHTML = ICONS[k];
+    b.append(ic, h('span', { text:label }));
+    return b;
+  })));
+}
+function renderNotices(){
+  const n = [];
+  if (state.connErr) n.push(h('div', { class:'notice' }, state.connErr));
+  else if (state.phase === 'app' && state.mode === 'local') n.push(h('div', { class:'notice' }, 'Not connected yet, so entries are saved on this phone only.'));
+  document.getElementById('notices').replaceChildren(...n);
+}
+async function setNayanaCity(c){
+  if (cityOf('nayana') === c) return;
+  await write(() => store.setDoc('couple/settings', Object.assign({}, state.settings, { nayanaCity:c })), c === 'milan' ? 'Welcome to Milan, Nayana.' : 'Updated.');
+}
+function renderFooter(){ document.getElementById('footer').replaceChildren(); }
+/* ---------- render ---------- */
+function renderMain(){
+  const main = document.getElementById('main');
+  if (state.phase !== 'app'){ main.replaceChildren(); return; }
+  const ae = document.activeElement, id = ae && ae.id; let ss = null, se = null;
+  try{ ss = ae.selectionStart; se = ae.selectionEnd; }catch(e){}
+  let view;
+  if (state.view) view = state.unlocked[state.view] ? spaceView(state.view) : pinView(state.view);
+  else if (state.tab === 'cal') view = calendarView();
+  else if (state.tab === 'together') view = togetherView();
+  else if (state.tab === 'settings') view = settingsView();
+  else if (state.tab === 'me') view = meView();
+  else if (state.tab === 'talk') view = talkView();
+  else view = usView();
+  main.replaceChildren(view);
+  if (id){ const el = document.getElementById(id); if (el && el !== document.activeElement){ try{ el.focus({ preventScroll:true }); if (ss != null && el.setSelectionRange) el.setSelectionRange(ss, se); }catch(e){} } }
+}
+let raf = 0;
+function renderAll(){
+  cancelAnimationFrame(raf);
+  raf = requestAnimationFrame(() => { renderSkies(); renderTabs(); renderNotices(); renderMain(); renderFooter(); renderSetup(); });
+}
+
+/* ---------- init ---------- */
+async function openSpace(code){
+  unsubs.forEach(u => { try{ u(); }catch(e){} }); unsubs = [];
+  state.code = code; state.sid = await spaceId(code);
+  store = fsdb ? fsStore(fsdb, state.sid) : localStore(state.sid);
+  state.pinsLoaded = { sudipt:false, nayana:false };
+  unsubs.push(
+    store.watchDoc('couple/settings', d => { state.settings = Object.assign({ nayanaCity:'kochi' }, d || {}); renderAll(); }),
+    store.watchDoc('couple/pause', d => { state.pause = d; renderAll(); }),
+    store.watchDoc('pins/sudipt', d => { state.pins.sudipt = d; state.pinsLoaded.sudipt = true; renderAll(); }),
+    store.watchDoc('pins/nayana', d => { state.pins.nayana = d; state.pinsLoaded.nayana = true; renderAll(); }),
+    store.watchColl('checkins', 'at', 40, r => { state.checkins = r; renderAll(); }),
+    store.watchColl('appreciations', 'at', 80, r => { state.apps = r; renderAll(); }),
+    store.watchColl('promises', 'at', 80, r => { state.promises = r; renderAll(); }),
+    store.watchColl('talks', 'at', 40, r => { state.talks = r; renderAll(); }),
+    store.watchColl('events', 'date', 500, r => { state.events = r; renderAll(); }),
+    store.watchColl('requests', 'at', 60, r => { state.requests = r; renderAll(); }),
+    store.watchColl('patterns', 'at', 40, r => { state.patterns = r.slice().reverse(); renderAll(); })
+  );
+  state.phase = 'app'; renderAll();
+  loadDevice().then(renderAll);
+}
+async function init(){
+  renderSkies();
+  if (!(window.crypto && crypto.subtle)){
+    document.getElementById('notices').replaceChildren(h('div', { class:'notice' }, 'This page needs to be opened over https to work.'));
+    return;
+  }
+  fsdb = await connect();
+  state.mode = fsdb ? 'synced' : 'local';
+  const saved = lsGet('os-code');
+  if (saved) await openSpace(saved);
+  else { state.phase = 'setup'; renderAll(); }
+  setInterval(() => { renderSkies(); checkIdle(); }, 30000);
+}
+init();
+})();
+
+</script>
+</body>
+</html>
