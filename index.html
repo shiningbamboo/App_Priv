@@ -1614,7 +1614,7 @@ function eventItem(o, ds, withDelete){
   if (o.anniv) return h('li', { class:'ev anniv-item' },
     h('div', { class:'ev-body' },
       h('p', { class:'ev-title' }, h('span', { class:'cal-heart big', 'aria-hidden':'true', text:'\u2665 ' }), 'Our anniversary'),
-      h('p', { class:'lock', text:'Every 3rd of the month. Locked, so it can\u2019t be moved or deleted.' })));
+      h('p', { class:'lock', text:'Every 3rd of the month. Locked' })));
   return h('li', { class:'ev' },
     h('div', { class:'ev-body' },
       h('p', { class:'ev-title' }, whoDot(o), o.title),
