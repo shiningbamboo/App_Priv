@@ -755,13 +755,18 @@ function clockCell(p){
   el.style.background = sky.bg; el.style.color = sky.ink; el.style.setProperty('--sub', sky.sub);
   return el;
 }
-function pauseIsLive(){ return !!(state.pause && state.pause.active && state.pause.until); }
+// A breather stops showing 6 hours after its return time, even if nobody tapped "I’m back".
+const PAUSE_GRACE = 6*3600e3;
+function pauseIsLive(){
+  const z = state.pause, u = z && z.active ? Date.parse(z.until) : NaN;
+  return isFinite(u) && Date.now() < u + PAUSE_GRACE;
+}
 function bridge(){
   const p = state.pause;
   if (state.phase === 'app' && pauseIsLive()){
     const who = p.by, overdue = Date.now() > Date.parse(p.until);
     return h('p', { class:'bridge-line paused' }, h('strong', { text:PEOPLE[who].name }),
-      overdue ? '\u2019s pause time is up.' : ' is taking a breather until ' + dualFor(p.until, who) + '.');
+      overdue ? '\u2019s breather time is up.' : ' is taking a breather until ' + dualFor(p.until, who) + '.');
   }
   if (state.phase === 'app' && p && !p.active && p.endedAt && Date.now() - Date.parse(p.endedAt) < 12*3600e3)
     return h('p', { class:'bridge-line' }, PEOPLE[p.by].name + ' is back. Ready to talk.');
@@ -1056,9 +1061,9 @@ function spaceBanner(p){
   const inc = state.requests.filter(r => r.to === p && r.status === 'open').length;
   if (inc) return { text:O.name + ' asked for something small.', act:'View', sub:'requests' };
   if (pauseIsLive() && z.by === o) return { text: now > Date.parse(z.until)
-    ? O.name + '\u2019s pause time is up. A gentle \u201cI\u2019m here whenever you\u2019re ready\u201d is perfect.'
+    ? O.name + '\u2019s breather time is up. A gentle \u201cI\u2019m here whenever you\u2019re ready\u201d is perfect.'
     : O.name + ' is taking a breather until ' + dualFor(z.until, o, p) + '. Some space is the kindest thing right now.' };
-  if (pauseIsLive() && z.by === p) return { text: now > Date.parse(z.until) ? 'Your pause time is up. A short message is enough to start.' : 'You\u2019re taking a breather until ' + dualFor(z.until, p, p) + '.', act:'Open', sub:'pause' };
+  if (pauseIsLive() && z.by === p) return { text: now > Date.parse(z.until) ? 'Your breather time is up. A short message is enough to start.' : 'You\u2019re taking a breather until ' + dualFor(z.until, p, p) + '.', act:'Open', sub:'pause' };
   const pd = parts(new Date(), tzOf(p)), tmr = parts(new Date(now + 864e5), tzOf(p));
   if (pd.d === 3) return { text:'Happy anniversary. Make a little time for each other today.' };
   if (tmr.d === 3) return { text:'Your anniversary is tomorrow. Something small for ' + O.him + ' would be lovely.' };
@@ -1213,7 +1218,7 @@ function pauseBlock(me){
     const mine = z.by === me, overdue = Date.now() > Date.parse(z.until), pr = PEOPLE[z.by];
     if (mine){
       return h('div', { class:'pause-panel active' },
-        h('h2', { text: overdue ? 'Your pause time is up' : 'You\u2019re taking a breather' }),
+        h('h2', { text: overdue ? 'Your breather time is up' : 'You\u2019re taking a breather' }),
         h('p', { text: overdue
           ? 'Whenever you\u2019re ready, a short message is enough to start. If you need longer, add an hour.'
           : 'Until ' + dualFor(z.until, me, me) + '. Take the time you need; ' + PEOPLE[partner].name + ' can see when you\u2019ll be back.' }),
@@ -1227,7 +1232,7 @@ function pauseBlock(me){
     const backAt = clock(new Date(z.until), tzOf(me));
     const msg = 'Ok. Love you. Talk at ' + backAt.replace(':00','') + '.';
     return h('div', { class:'pause-panel active' },
-      h('h2', { text: overdue ? pr.name + '\u2019s pause time is up' : pr.name + ' is taking a breather' }),
+      h('h2', { text: overdue ? pr.name + '\u2019s breather time is up' : pr.name + ' is taking a breather' }),
       h('p', { text: overdue
         ? 'A gentle \u201cHey, I\u2019m here whenever you\u2019re ready\u201d is perfect.'
         : 'Back ' + dualFor(z.until, z.by, me) + '. If you\u2019d like, send something short and warm:' }),
@@ -1529,7 +1534,6 @@ function usView(){
   const todayDate = new Intl.DateTimeFormat('en-GB', { weekday:'long', day:'numeric', month:'long' }).format(new Date());
   const up = upcoming(3, 62), last = state.apps[0];
   return h('div', { class:'stack-lg' },
-    pauseIsLive() ? h('div', { class:'banner' }, h('span', { text: Date.now() > Date.parse(z.until) ? PEOPLE[z.by].name + '\u2019s pause time is up.' : PEOPLE[z.by].name + ' is taking a breather until ' + dualFor(z.until, z.by) + '.' })) : null,
     h('section', { class:'today' },
       h('div', { class:'today-head' }, h('h2', { text:'Today' }), h('span', { class:'today-date', text:todayDate })),
       h('div', { class:'today-grid' }, ['sudipt','nayana'].map(todayPanel))),
